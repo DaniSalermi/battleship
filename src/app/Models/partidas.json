@@ -1,0 +1,21 @@
+[
+  {
+    "idpartida": null,
+    "rows": null,
+    "colums": null,
+    "player1": {
+      "name": null,
+      "score": null,
+      "ready": false,
+      "selectedBoard": [],
+      "playBoard": []
+    },
+    "player2": {
+      "name": null,
+      "score": null,
+      "ready": false,
+      "selectedBoard": [],
+      "playBoard": []
+    }
+  }
+]

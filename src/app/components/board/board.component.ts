@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Alert } from "selenium-webdriver";
 
 @Component({
   selector: "app-board",
@@ -7,12 +8,17 @@ import { Component, OnInit } from "@angular/core";
 })
 export class BoardComponent implements OnInit {
   board = [];
-
+  rows = 5;
+  columns = 5;
   constructor() {
-    this.generateBoard(4, 4);
+    this.generateBoard(this.rows, this.columns);
   }
 
   ngOnInit() {}
+
+  selectTile(x, y) {
+    alert(`Hiciste click en la posicion ${x} / ${y}`);
+  }
 
   generateBoard(rows, colums) {
     for (let i = 0; i < rows; i++) {

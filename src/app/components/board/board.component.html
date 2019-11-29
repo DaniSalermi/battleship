@@ -1,7 +1,13 @@
-<div class="board">
-  <ng-container *ngFor="let row of board">
-    <ng-container *ngFor="let tile of row">
-      <div></div>
+<div
+  class="board"
+  [ngStyle]="{
+    gridTemplateColumns: 'repeat(' + columns + ', 1fr)',
+    gridTemplateRows: 'repeat(' + rows + ', 1fr)'
+  }"
+>
+  <ng-container *ngFor="let row of board; let i = index">
+    <ng-container *ngFor="let tile of row; let j = index">
+      <div (click)="selectTile(i, j)"></div>
     </ng-container>
   </ng-container>
 </div>
