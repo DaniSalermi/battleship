@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Alert } from "selenium-webdriver";
+import { PlaysService } from "src/app/services/plays.service";
 
 @Component({
   selector: "app-board",
@@ -8,9 +8,9 @@ import { Alert } from "selenium-webdriver";
 })
 export class BoardComponent implements OnInit {
   board = [];
-  rows = 5;
-  columns = 5;
-  constructor() {
+  rows = 8;
+  columns = 8;
+  constructor(private playsservive: PlaysService) {
     this.generateBoard(this.rows, this.columns);
   }
 
@@ -20,13 +20,16 @@ export class BoardComponent implements OnInit {
     alert(`Hiciste click en la posicion ${x} / ${y}`);
   }
 
-  generateBoard(rows, colums) {
+  generateBoard(rows, columns) {
+    // this.playsservive.addGrid(rows, columns, "Nata");
     for (let i = 0; i < rows; i++) {
       let row = [];
       this.board.push(row);
-      for (let j = 0; j < colums; j++) {
+      for (let j = 0; j < columns; j++) {
         this.board[i].push("");
       }
     }
+
+    console.log(this.playsservive.getPlay("001"));
   }
 }

@@ -1,10 +1,10 @@
 [
   {
-    "idpartida": null,
+    "id": "001",
     "rows": null,
-    "colums": null,
+    "columns": null,
     "player1": {
-      "name": null,
+      "name": "Nata",
       "score": null,
       "ready": false,
       "selectedBoard": [],
