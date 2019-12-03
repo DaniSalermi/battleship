@@ -1,13 +1,16 @@
 [
   {
-    "id": "001",
+    "id": 1,
     "rows": null,
     "columns": null,
     "player1": {
       "name": "Nata",
       "score": null,
       "ready": false,
-      "selectedBoard": [],
+      "selectedBoard": {
+        "x": [],
+        "y": []
+      },
       "playBoard": []
     },
     "player2": {
