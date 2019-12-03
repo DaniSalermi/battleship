@@ -10,13 +10,22 @@ export class PlaysService {
   getPlay(id) {
     let out = [];
     this.plays.forEach(play => {
-      console.log("ok");
       if (play.id === id) {
         console.log(play.id);
         out = play;
       }
     });
     return out;
+  }
+  setPlay(id, x, y) {
+    let out = [];
+    this.plays.forEach(play => {
+      if (play.id === id) {
+        console.log();
+        play.player1.selectedBoard.x.push(x);
+        play.player1.selectedBoard.y.push(y);
+      }
+    });
   }
   addGrid(rows, columns, player) {
     this.plays.forEach(play => {

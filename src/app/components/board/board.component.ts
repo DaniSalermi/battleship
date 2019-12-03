@@ -18,6 +18,8 @@ export class BoardComponent implements OnInit {
 
   selectTile(x, y) {
     alert(`Hiciste click en la posicion ${x} / ${y}`);
+    this.playsservive.setPlay(1, x, y);
+    console.log(this.playsservive.getPlay(1));
   }
 
   generateBoard(rows, columns) {
@@ -29,7 +31,5 @@ export class BoardComponent implements OnInit {
         this.board[i].push("");
       }
     }
-
-    console.log(this.playsservive.getPlay(1));
   }
 }
