@@ -18,6 +18,7 @@ export class PlaysService {
       return out;
     });
   }
+
   addGrid(rows, columns, player) {
     this.plays.forEach(play => {
       if (play.player1.name === player) {

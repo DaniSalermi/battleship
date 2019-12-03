@@ -29,7 +29,6 @@ export class BoardComponent implements OnInit {
         this.board[i].push("");
       }
     }
-
     console.log(this.playsservive.getPlay("001"));
   }
 }
