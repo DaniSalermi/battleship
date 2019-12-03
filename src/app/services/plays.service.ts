@@ -11,12 +11,12 @@ export class PlaysService {
     let out = [];
     this.plays.forEach(play => {
       console.log("ok");
-      console.log(play);
       if (play.id === id) {
+        console.log(play.id);
         out = play;
       }
-      return out;
     });
+    return out;
   }
   addGrid(rows, columns, player) {
     this.plays.forEach(play => {

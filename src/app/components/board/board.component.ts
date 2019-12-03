@@ -30,6 +30,6 @@ export class BoardComponent implements OnInit {
       }
     }
 
-    console.log(this.playsservive.getPlay("001"));
+    console.log(this.playsservive.getPlay(1));
   }
 }
