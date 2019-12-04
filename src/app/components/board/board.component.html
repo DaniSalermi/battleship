@@ -7,7 +7,10 @@
 >
   <ng-container *ngFor="let row of board; let i = index">
     <ng-container *ngFor="let tile of row; let j = index">
-      <div (click)="selectTile(i, j)"></div>
+      <div
+        [ngClass]="i == ii && j == jj ? 'red' : 'green'"
+        (click)="selectTile(i, j)"
+      ></div>
     </ng-container>
   </ng-container>
 </div>
