@@ -8,31 +8,37 @@ import { PlaysService } from "src/app/services/plays.service";
 })
 export class BoardComponent implements OnInit {
   board = [];
-  rows = 8;
-  columns = 8;
-  ii: number;
-  jj: number;
-  constructor(private playsservive: PlaysService) {
+  rows = 10;
+  columns = 10;
+  idGame = null;
+  idPlayer = null;
+  status: boolean;
+
+  constructor(private playsService: PlaysService) {
     this.generateBoard(this.rows, this.columns);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    let game = this.playsService.newGame();
+    this.idGame = game.idGame;
+    this.idPlayer = game.idPlayer;
+    this.status = this.playsService.playerStatus(this.idGame, this.idPlayer);
+  }
 
   selectTile(x, y) {
-    // alert(`Hiciste click en la posicion ${x} / ${y}`);
-    this.playsservive.setPlay(1, x, y);
-    this.ii = x;
-    this.jj = y;
+    this.board[x][y] = 1;
+  }
 
-    console.log(this.playsservive.getPlay(1));
+  startGame() {
+    this.playsService.selectBoard(this.idGame, this.idPlayer, this.board);
+    this.status = this.playsService.playerStatus(this.idGame, this.idPlayer);
   }
   generateBoard(rows, columns) {
-    // this.playsservive.addGrid(rows, columns, "Nata");
     for (let i = 0; i < rows; i++) {
       let row = [];
       this.board.push(row);
       for (let j = 0; j < columns; j++) {
-        this.board[i].push("");
+        this.board[i].push(0);
       }
     }
   }

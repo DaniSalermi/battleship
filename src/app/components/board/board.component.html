@@ -1,16 +1,24 @@
+<div>
+  <input type="text" placeholder="Ingresa tu nickname" />
+</div>
 <div
   class="board"
   [ngStyle]="{
     gridTemplateColumns: 'repeat(' + columns + ', 1fr)',
     gridTemplateRows: 'repeat(' + rows + ', 1fr)'
   }"
+  *ngIf="!status"
 >
   <ng-container *ngFor="let row of board; let i = index">
     <ng-container *ngFor="let tile of row; let j = index">
       <div
-        [ngClass]="i == ii && j == jj ? 'red' : 'green'"
         (click)="selectTile(i, j)"
+        [ngStyle]="{ background: board[i][j] === 1 ? 'brown' : 'green' }"
       ></div>
     </ng-container>
   </ng-container>
+</div>
+
+<div>
+  <button (click)="startGame()">Iniciar Juego</button>
 </div>
