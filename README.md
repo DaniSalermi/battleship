@@ -84,4 +84,4 @@ Posterior al estudio de usuarios, realizamos una investigación para conocer sob
 
 Una vez que establecimos los requerimientos del los usuario y realizamos el benchamark de las aplicaciones tanto para web como para móvil, diseñamos el flujo del usuario dentro de la aplicación, para facilitar la toma de decisiones dentro del código.
 
-<a href="https://ibb.co/ZXhw7gv"><img src="https://i.ibb.co/QQ6qtHh/Flujo-de-la-aplicaci-n.png" alt="Flujo-de-la-aplicaci-n" border="0"></a><br /><a target='_blank' href='https://es.imgbb.com/'>sube imagenes</a><br />
+<a href="https://ibb.co/ZXhw7gv"><img src="https://i.ibb.co/QQ6qtHh/Flujo-de-la-aplicaci-n.png" alt="Flujo-de-la-aplicaci-n" border="0"></a><br /><a target='_blank' href='https://es.imgbb.com/'></a><br />
