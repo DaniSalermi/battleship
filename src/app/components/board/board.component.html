@@ -40,7 +40,10 @@
         >
           <ng-container *ngFor="let gameTile of rowGame; let j = index">
             <div
-              [ngStyle]="{ background: board[i][j] === 1 ? 'brown' : 'green' }"
+              [ngStyle]="{
+                background:
+                  game.player1.selectedBoard[i][j] === 1 ? 'brown' : 'green'
+              }"
             ></div>
           </ng-container>
         </ng-container>
@@ -62,10 +65,13 @@
         <ng-container
           *ngFor="let rowGame of game.player1.playBoard; let i = index"
         >
-          <ng-container
-            *ngFor="let rowGame of game.player1.playBoard; let j = index"
-          >
-            <div></div>
+          <ng-container *ngFor="let gameTile of rowGame; let j = index">
+            <div
+              [ngStyle]="{
+                background:
+                  game.player1.playBoard[i][j] === 1 ? 'yellow' : 'white'
+              }"
+            ></div>
           </ng-container>
         </ng-container>
       </ng-container>
