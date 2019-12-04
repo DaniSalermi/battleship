@@ -1,24 +1,45 @@
-<div>
-  <input type="text" placeholder="Ingresa tu nickname" />
-</div>
-<div
-  class="board"
-  [ngStyle]="{
-    gridTemplateColumns: 'repeat(' + columns + ', 1fr)',
-    gridTemplateRows: 'repeat(' + rows + ', 1fr)'
-  }"
-  *ngIf="!status"
->
-  <ng-container *ngFor="let row of board; let i = index">
-    <ng-container *ngFor="let tile of row; let j = index">
-      <div
-        (click)="selectTile(i, j)"
-        [ngStyle]="{ background: board[i][j] === 1 ? 'brown' : 'green' }"
-      ></div>
+<div *ngIf="!status">
+  <div>
+    <input type="text" placeholder="Ingresa tu nickname" />
+  </div>
+  <div
+    class="board"
+    [ngStyle]="{
+      gridTemplateColumns: 'repeat(' + columns + ', 1fr)',
+      gridTemplateRows: 'repeat(' + rows + ', 1fr)'
+    }"
+  >
+    <ng-container *ngFor="let row of board; let i = index">
+      <ng-container *ngFor="let tile of row; let j = index">
+        <div
+          (click)="selectTile(i, j)"
+          [ngStyle]="{ background: board[i][j] === 1 ? 'brown' : 'green' }"
+        ></div>
+      </ng-container>
     </ng-container>
-  </ng-container>
+  </div>
+  <div>
+    <button (click)="startGame()">Iniciar Juego</button>
+  </div>
 </div>
-
-<div>
-  <button (click)="startGame()">Iniciar Juego</button>
+<div *ngIf="status">
+  <div
+    class="board"
+    [ngStyle]="{
+      gridTemplateColumns: 'repeat(' + columns + ', 1fr)',
+      gridTemplateRows: 'repeat(' + rows + ', 1fr)'
+    }"
+  >
+    <ng-container *ngFor="let game of currentGame">
+      <ng-container
+        *ngFor="let rowGame of game.player1.selectedBoard; let i = index"
+      >
+        <ng-container *ngFor="let gameTile of rowGame; let j = index">
+          <div
+            [ngStyle]="{ background: board[i][j] === 1 ? 'brown' : 'green' }"
+          ></div>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </div>
 </div>
