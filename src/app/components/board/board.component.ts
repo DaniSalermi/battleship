@@ -7,6 +7,7 @@ import { PlaysService } from "src/app/services/plays.service";
   styleUrls: ["./board.component.scss"]
 })
 export class BoardComponent implements OnInit {
+  currentGame = [];
   board = [];
   rows = 10;
   columns = 10;
@@ -32,6 +33,8 @@ export class BoardComponent implements OnInit {
   startGame() {
     this.playsService.selectBoard(this.idGame, this.idPlayer, this.board);
     this.status = this.playsService.playerStatus(this.idGame, this.idPlayer);
+    this.currentGame.push(this.playsService.getPlay(this.idGame));
+    console.log(this.currentGame);
   }
 
   generateBoard(rows, columns) {

@@ -65,11 +65,10 @@ export class PlaysService {
     return Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
   }
 
-  getPlay(id) {
+  getPlay(idGame) {
     let out = [];
     this.plays.forEach(play => {
-      if (play.id === id) {
-        console.log(play.id);
+      if (play.id === idGame) {
         out = play;
       }
     });
