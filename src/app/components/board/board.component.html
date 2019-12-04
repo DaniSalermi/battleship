@@ -7,13 +7,18 @@
     gridTemplateColumns: 'repeat(' + columns + ', 1fr)',
     gridTemplateRows: 'repeat(' + rows + ', 1fr)'
   }"
+  *ngIf="!status"
 >
   <ng-container *ngFor="let row of board; let i = index">
     <ng-container *ngFor="let tile of row; let j = index">
-      <div (click)="selectTile(i, j)"></div>
+      <div
+        (click)="selectTile(i, j)"
+        [ngStyle]="{ background: board[i][j] === 1 ? 'brown' : 'green' }"
+      ></div>
     </ng-container>
   </ng-container>
 </div>
+
 <div>
-  <button>Iniciar Juego</button>
+  <button (click)="startGame()">Iniciar Juego</button>
 </div>

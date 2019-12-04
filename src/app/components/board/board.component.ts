@@ -8,10 +8,11 @@ import { PlaysService } from "src/app/services/plays.service";
 })
 export class BoardComponent implements OnInit {
   board = [];
-  rows = 8;
-  columns = 8;
+  rows = 10;
+  columns = 10;
   idGame = null;
   idPlayer = null;
+  status: boolean;
 
   constructor(private playsService: PlaysService) {
     this.generateBoard(this.rows, this.columns);
@@ -21,11 +22,16 @@ export class BoardComponent implements OnInit {
     let game = this.playsService.newGame();
     this.idGame = game.idGame;
     this.idPlayer = game.idPlayer;
+    this.status = this.playsService.playerStatus(this.idGame, this.idPlayer);
   }
 
   selectTile(x, y) {
-    alert(`Hiciste click en la posicion ${x} / ${y}`);
-    this.playsService.setPlay(1, x, y);
+    this.board[x][y] = 1;
+  }
+
+  startGame() {
+    this.playsService.selectBoard(this.idGame, this.idPlayer, this.board);
+    this.status = this.playsService.playerStatus(this.idGame, this.idPlayer);
   }
 
   generateBoard(rows, columns) {

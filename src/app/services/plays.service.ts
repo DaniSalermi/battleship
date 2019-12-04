@@ -75,6 +75,30 @@ export class PlaysService {
     });
     return out;
   }
+
+  selectBoard(idGame, idPlayer, board) {
+    this.plays.forEach(play => {
+      if (play.id === idGame && play.player1.id === idPlayer) {
+        play.player1.ready = true;
+        play.player1.selectedBoard = board;
+      } else if (play.id === idGame && play.player2.id === idPlayer) {
+        play.player2.ready = true;
+        play.player2.selectedBoard = board;
+      }
+    });
+    console.log(this.plays);
+  }
+  playerStatus(idGame, idPlayer) {
+    let output = false;
+    this.plays.forEach(play => {
+      if (play.id === idGame && play.player1.id === idPlayer) {
+        output = play.player1.ready;
+      } else if (play.id === idGame && play.player2.id === idPlayer) {
+        output = play.player2.ready;
+      }
+    });
+    return output;
+  }
   setPlay(id, x, y) {
     let out = [];
     this.plays.forEach(play => {
