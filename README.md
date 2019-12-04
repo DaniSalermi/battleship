@@ -79,3 +79,9 @@ Posterior al estudio de usuarios, realizamos una investigación para conocer sob
 
 <a target='_blank' href='https://es.imgbb.com/'>subir fotos internet</a><br /><a href="https://ibb.co/Sn9sGjK"><img src="https://i.ibb.co/swMmzfF/IMG-1513.png" alt="IMG-1513" border="0" width=500px></a>
 <a href="https://ibb.co/92BNBMP"><img src="https://i.ibb.co/S0HPHLS/IMG-1512.png" alt="IMG-1512" border="0" width=500px></a>
+
+# Flujo de la aplicación
+
+Una vez que establecimos los requerimientos del los usuario y realizamos el benchamark de las aplicaciones tanto para web como para móvil, diseñamos el flujo del usuario dentro de la aplicación, para facilitar la toma de decisiones dentro del código.
+
+<a href="https://ibb.co/ZXhw7gv"><img src="https://i.ibb.co/QQ6qtHh/Flujo-de-la-aplicaci-n.png" alt="Flujo-de-la-aplicaci-n" border="0"></a><br /><a target='_blank' href='https://es.imgbb.com/'>sube imagenes</a><br />
