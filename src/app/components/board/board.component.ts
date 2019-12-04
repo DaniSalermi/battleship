@@ -14,6 +14,7 @@ export class BoardComponent implements OnInit {
   idGame = null;
   idPlayer = null;
   status: boolean;
+  pboard = [];
 
   constructor(private playsService: PlaysService) {
     this.generateBoard(this.rows, this.columns);
@@ -29,12 +30,15 @@ export class BoardComponent implements OnInit {
   selectTile(x, y) {
     this.board[x][y] = 1;
   }
+  selectPlayBoard(x, y) {
+    this.pboard[x][y] = 1;
+  }
 
   startGame() {
     this.playsService.selectBoard(this.idGame, this.idPlayer, this.board);
     this.status = this.playsService.playerStatus(this.idGame, this.idPlayer);
     this.currentGame.push(this.playsService.getPlay(this.idGame));
-    console.log(this.currentGame);
+    this.pboard = this.currentGame[0].player1.playBoard;
   }
   generateBoard(rows, columns) {
     for (let i = 0; i < rows; i++) {

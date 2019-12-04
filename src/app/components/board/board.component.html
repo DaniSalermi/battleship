@@ -62,14 +62,12 @@
       }"
     >
       <ng-container *ngFor="let game of currentGame">
-        <ng-container
-          *ngFor="let rowGame of game.player1.playBoard; let i = index"
-        >
-          <ng-container *ngFor="let gameTile of rowGame; let j = index">
+        <ng-container *ngFor="let rowGame of pboard; let i = index">
+          <ng-container *ngFor="let rowGame of pboard; let j = index">
             <div
+              (click)="selectPlayBoard(i, j)"
               [ngStyle]="{
-                background:
-                  game.player1.playBoard[i][j] === 1 ? 'yellow' : 'white'
+                background: pboard[i][j] === 1 ? 'yellow' : 'white'
               }"
             ></div>
           </ng-container>
