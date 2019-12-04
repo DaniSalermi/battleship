@@ -10,27 +10,31 @@ export class BoardComponent implements OnInit {
   board = [];
   rows = 8;
   columns = 8;
-  constructor(private playsservive: PlaysService) {
+  idGame = null;
+  idPlayer = null;
+
+  constructor(private playsService: PlaysService) {
     this.generateBoard(this.rows, this.columns);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    let game = this.playsService.newGame();
+    this.idGame = game.idGame;
+    this.idPlayer = game.idPlayer;
+  }
 
   selectTile(x, y) {
     alert(`Hiciste click en la posicion ${x} / ${y}`);
-    this.playsservive.setPlay(1, x, y);
-    console.log(this.playsservive.getPlay(1));
+    this.playsService.setPlay(1, x, y);
   }
 
   generateBoard(rows, columns) {
-    // this.playsservive.addGrid(rows, columns, "Nata");
     for (let i = 0; i < rows; i++) {
       let row = [];
       this.board.push(row);
       for (let j = 0; j < columns; j++) {
-        this.board[i].push("");
+        this.board[i].push(0);
       }
     }
-    console.log(this.playsservive.getPlay("001"));
   }
 }
