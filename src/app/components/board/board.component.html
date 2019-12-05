@@ -34,18 +34,18 @@
         gridTemplateRows: 'repeat(' + rows + ', 1fr)'
       }"
     >
-      <ng-container *ngFor="let game of currentGame">
-        <ng-container
-          *ngFor="let rowGame of game.player1.selectedBoard; let i = index"
-        >
-          <ng-container *ngFor="let gameTile of rowGame; let j = index">
-            <div
-              [ngStyle]="{
-                background:
-                  game.player1.selectedBoard[i][j] === 1 ? 'brown' : 'green'
-              }"
-            ></div>
-          </ng-container>
+      <ng-container
+        *ngFor="let rowGame of currentGame.player1.selectedBoard; let i = index"
+      >
+        <ng-container *ngFor="let gameTile of rowGame; let j = index">
+          <div
+            [ngStyle]="{
+              background:
+                currentGame.player1.selectedBoard[i][j] === 1
+                  ? 'brown'
+                  : 'green'
+            }"
+          ></div>
         </ng-container>
       </ng-container>
     </div>
@@ -61,16 +61,14 @@
         gridTemplateRows: 'repeat(' + rows + ', 1fr)'
       }"
     >
-      <ng-container *ngFor="let game of currentGame">
-        <ng-container *ngFor="let rowGame of pboard; let i = index">
-          <ng-container *ngFor="let rowGame of pboard; let j = index">
-            <div
-              (click)="selectPlayBoard(i, j)"
-              [ngStyle]="{
-                background: pboard[i][j] === 1 ? 'yellow' : 'white'
-              }"
-            ></div>
-          </ng-container>
+      <ng-container *ngFor="let rowGame of playBoard; let i = index">
+        <ng-container *ngFor="let gameTile of rowGame; let j = index">
+          <div
+            (click)="selectPlayBoard(i, j)"
+            [ngStyle]="{
+              background: playBoard[i][j] === 1 ? 'yellow' : 'white'
+            }"
+          ></div>
         </ng-container>
       </ng-container>
     </div>

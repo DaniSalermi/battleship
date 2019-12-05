@@ -7,14 +7,14 @@ import { PlaysService } from "src/app/services/plays.service";
   styleUrls: ["./board.component.scss"]
 })
 export class BoardComponent implements OnInit {
-  currentGame = [];
+  currentGame: any = {};
   board = [];
   rows = 10;
   columns = 10;
   idGame = null;
   idPlayer = null;
   status: boolean;
-  pboard = [];
+  playBoard = [];
 
   constructor(private playsService: PlaysService) {
     this.generateBoard(this.rows, this.columns);
@@ -31,14 +31,14 @@ export class BoardComponent implements OnInit {
     this.board[x][y] = 1;
   }
   selectPlayBoard(x, y) {
-    this.pboard[x][y] = 1;
+    this.playBoard[x][y] = 1;
   }
 
   startGame() {
     this.playsService.selectBoard(this.idGame, this.idPlayer, this.board);
     this.status = this.playsService.playerStatus(this.idGame, this.idPlayer);
-    this.currentGame.push(this.playsService.getPlay(this.idGame));
-    this.pboard = this.currentGame[0].player1.playBoard;
+    this.currentGame = this.playsService.getPlay(this.idGame);
+    this.playBoard = this.currentGame.player1.playBoard;
   }
   generateBoard(rows, columns) {
     for (let i = 0; i < rows; i++) {

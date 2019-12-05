@@ -45,6 +45,7 @@ export class PlaysService {
         score: 0,
         ready: false,
         selectedBoard: [],
+        turn: true,
         playBoard: this.generateBoard(rows, columns)
       },
       player2: {
@@ -53,6 +54,7 @@ export class PlaysService {
         score: 0,
         ready: false,
         selectedBoard: [],
+        turn: false,
         playBoard: this.generateBoard(rows, columns)
       }
     };
@@ -98,14 +100,10 @@ export class PlaysService {
     });
     return output;
   }
-  setPlay(id, x, y) {
-    let out = [];
-    this.plays.forEach(play => {
-      if (play.id === id) {
-        console.log();
-        play.player1.selectedBoard.x.push(x);
-        play.player1.selectedBoard.y.push(y);
-      }
-    });
+
+  shot(x, y, idGame, idPlayer) {
+    // Verificar juego y jugador y que sea su turno
+    // asignar al jugador su jugada y verificar si le dio a un barco del enemigo
+    // retornar si fue 'hit' y mantener el turno en ese jugador
   }
 }

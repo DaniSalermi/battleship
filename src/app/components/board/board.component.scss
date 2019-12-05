@@ -8,9 +8,12 @@
     background-color: green;
   }
 }
-
+.container {
+  display: flex;
+  margin: 20px;
+}
 .playboard {
-  margin-left: 20px;
+  margin-left: 100px;
   display: grid;
   width: 500px;
   height: 500px;
