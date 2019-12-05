@@ -32,6 +32,10 @@ export class BoardComponent implements OnInit {
   }
   selectPlayBoard(x, y) {
     this.playBoard[x][y] = 1;
+    let selectBoardPlayer2 = this.currentGame.player2.selectedBoard[x][y];
+    if (selectBoardPlayer2 === 1) {
+      this.playBoard[x][y] = 2;
+    } else console.log("No acerté al barco");
   }
 
   startGame() {
