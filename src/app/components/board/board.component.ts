@@ -15,6 +15,7 @@ export class BoardComponent implements OnInit {
   idPlayer = null;
   status: boolean;
   playBoard = [];
+  playBoard2: any;
 
   constructor(private playsService: PlaysService) {
     this.generateBoard(this.rows, this.columns);
@@ -31,11 +32,11 @@ export class BoardComponent implements OnInit {
     this.board[x][y] = 1;
   }
   selectPlayBoard(x, y) {
-    this.playBoard[x][y] = 1;
-    let selectBoardPlayer2 = this.currentGame.player2.selectedBoard[x][y];
-    if (selectBoardPlayer2 === 1) {
-      this.playBoard[x][y] = 2;
-    } else console.log("No acerté al barco");
+    if (this.currentGame.player1.turn) {
+      this.playsService.shot(x, y, this.idGame, this.currentGame.player1.id);
+    } else {
+      this.playsService.shot(x, y, this.idGame, this.currentGame.player2.id);
+    }
   }
 
   startGame() {
@@ -43,6 +44,7 @@ export class BoardComponent implements OnInit {
     this.status = this.playsService.playerStatus(this.idGame, this.idPlayer);
     this.currentGame = this.playsService.getPlay(this.idGame);
     this.playBoard = this.currentGame.player1.playBoard;
+    this.playBoard2 = this.currentGame.player2.playBoard;
   }
   generateBoard(rows, columns) {
     for (let i = 0; i < rows; i++) {

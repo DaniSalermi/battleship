@@ -114,7 +114,45 @@ export class PlaysService {
 
   shot(x, y, idGame, idPlayer) {
     // Verificar juego y jugador y que sea su turno
+    this.plays.forEach(play => {
+      if (
+        play.id === idGame &&
+        play.player1.id === idPlayer &&
+        play.player1.turn
+      ) {
+        if (play.player1.playBoard[x][y] === 0) {
+          play.player1.playBoard[x][y] = 1;
+          if (play.player2.selectedBoard[x][y] === 1) {
+            play.player1.playBoard[x][y] = 2;
+          } else {
+            console.log("no acertaste al barco");
+            play.player1.turn = false;
+            play.player2.turn = true;
+          }
+        } else {
+          alert("Ya pegaste en ese espacio");
+        }
+      } else if (
+        play.id === idGame &&
+        play.player2.id === idPlayer &&
+        play.player2.turn
+      ) {
+        if (play.player2.playBoard[x][y] === 0) {
+          play.player2.playBoard[x][y] = 1;
+          if (play.player1.selectedBoard[x][y] === 1) {
+            play.player2.playBoard[x][y] = 2;
+          } else {
+            console.log("no acertaste al barco");
+            play.player2.turn = false;
+            play.player1.turn = true;
+          }
+        } else {
+          alert("Ya pegaste en ese espacio");
+        }
+      }
+    });
     // asignar al jugador su jugada y verificar si le dio a un barco del enemigo
     // retornar si fue 'hit' y mantener el turno en ese jugador
+    console.log(this.plays);
   }
 }
