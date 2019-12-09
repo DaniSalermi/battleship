@@ -46,6 +46,10 @@
               background:
                 currentGame.player1.selectedBoard[i][j] === 1
                   ? 'brown'
+                  : currentGame.player1.selectedBoard[i][j] === -1
+                  ? 'blue'
+                  : currentGame.player1.selectedBoard[i][j] === 2
+                  ? 'purple'
                   : 'green'
             }"
           ></div>
@@ -100,6 +104,10 @@
               background:
                 currentGame.player2.selectedBoard[i][j] === 1
                   ? 'brown'
+                  : currentGame.player2.selectedBoard[i][j] === -1
+                  ? 'blue'
+                  : currentGame.player2.selectedBoard[i][j] === 2
+                  ? 'purple'
                   : 'green'
             }"
           ></div>

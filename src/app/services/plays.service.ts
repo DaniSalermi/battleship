@@ -124,7 +124,9 @@ export class PlaysService {
           play.player1.playBoard[x][y] = 1;
           if (play.player2.selectedBoard[x][y] === 1) {
             play.player1.playBoard[x][y] = 2;
+            play.player2.selectedBoard[x][y] = 2;
           } else {
+            play.player2.selectedBoard[x][y] = -1;
             console.log("no acertaste al barco");
             play.player1.turn = false;
             play.player2.turn = true;
@@ -141,7 +143,9 @@ export class PlaysService {
           play.player2.playBoard[x][y] = 1;
           if (play.player1.selectedBoard[x][y] === 1) {
             play.player2.playBoard[x][y] = 2;
+            play.player1.selectedBoard[x][y] = 2;
           } else {
+            play.player1.selectedBoard[x][y] = -1;
             console.log("no acertaste al barco");
             play.player2.turn = false;
             play.player1.turn = true;
