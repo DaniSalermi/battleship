@@ -17,6 +17,14 @@ export class PlaysService {
     this.newGame();
   }
 
+  lastZombie(arrBoard) {
+    let arrEndGame = [];
+    arrBoard.forEach(element => {
+      arrEndGame = arrEndGame.concat(element);
+    });
+    return arrEndGame.includes(1);
+  }
+
   assignPlayer2(idGame) {
     // retornar el idGame y el player2 id de ese juego
   }
@@ -134,6 +142,9 @@ export class PlaysService {
         } else {
           alert("Ya pegaste en ese espacio");
         }
+        if (!this.lastZombie(play.player2.selectedBoard)) {
+          alert("Player 1 Ganaste!!!");
+        }
       } else if (
         play.id === idGame &&
         play.player2.id === idPlayer &&
@@ -152,6 +163,9 @@ export class PlaysService {
           }
         } else {
           alert("Ya pegaste en ese espacio");
+        }
+        if (!this.lastZombie(play.player1.selectedBoard)) {
+          alert("Player 2 Ganaste!!!");
         }
       }
     });
