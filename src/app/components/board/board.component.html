@@ -1,7 +1,11 @@
 <div class="container">
   <div *ngIf="!status">
     <div>
-      <input type="text" placeholder="Ingresa tu nickname" />
+      <input
+        type="text"
+        placeholder="Ingresa tu nickname"
+        [formControl]="name"
+      />
     </div>
     <div
       class="board"
@@ -26,7 +30,7 @@
 </div>
 
 <ng-container *ngIf="status">
-  <h1>PLAYER 1</h1>
+  <h1>{{ currentGame.player1.name }}</h1>
   ({{ currentGame.player1.turn ? "Es tu turno" : "Espera tu turno" }})
   <div class="container">
     <!-- board blocked Player 1-->
@@ -84,7 +88,7 @@
     </div>
   </div>
   <hr />
-  <h1>PLAYER 2</h1>
+  <h1>{{ currentGame.player2.name }}</h1>
   ({{ currentGame.player2.turn ? "Es tu turno" : "Espera tu turno" }})
   <div class="container">
     <!-- board blocked Player 2-->

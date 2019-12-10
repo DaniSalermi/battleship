@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { PlaysService } from "src/app/services/plays.service";
+import { FormControl } from "@angular/forms";
 
 @Component({
   selector: "app-board",
@@ -7,6 +8,7 @@ import { PlaysService } from "src/app/services/plays.service";
   styleUrls: ["./board.component.scss"]
 })
 export class BoardComponent implements OnInit {
+  name = new FormControl("");
   currentGame: any = {};
   board = [];
   rows = 10;
@@ -45,6 +47,10 @@ export class BoardComponent implements OnInit {
     this.currentGame = this.playsService.getPlay(this.idGame);
     this.playBoard = this.currentGame.player1.playBoard;
     this.playBoard2 = this.currentGame.player2.playBoard;
+    this.playerName();
+  }
+  playerName() {
+    this.playsService.savePlayer(this.idPlayer, this.name.value, this.idGame);
   }
   generateBoard(rows, columns) {
     for (let i = 0; i < rows; i++) {

@@ -24,7 +24,19 @@ export class PlaysService {
     });
     return arrEndGame.includes(1);
   }
-
+  savePlayer(idPlayer, name, idGame) {
+    this.plays.forEach(play => {
+      if (play.id === idGame) {
+        if (play.player1.id === idPlayer) {
+          play.player1.name = name;
+          console.log(play.player1.name);
+        } else if (play.player2.id === idPlayer) {
+          play.player2.name = name;
+          console.log(play.player2.name);
+        }
+      }
+    });
+  }
   assignPlayer2(idGame) {
     // retornar el idGame y el player2 id de ese juego
   }
@@ -58,7 +70,7 @@ export class PlaysService {
       },
       player2: {
         id: this.getRandomId(),
-        name: "",
+        name: "ROBOCOP",
         score: 0,
         ready: false,
         selectedBoard: [
