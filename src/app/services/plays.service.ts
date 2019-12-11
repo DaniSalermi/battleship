@@ -6,8 +6,9 @@ import { HttpClient } from "@angular/common/http";
 })
 export class PlaysService {
   private plays = [];
+
   constructor(private http: HttpClient) {}
-  // Función para saber si existe en la base de datos alguna partida vacía donde el player 2 pueda entrar a jugar.
+  // todo Función para saber si existe en la base de datos alguna partida vacía donde el player 2 pueda entrar a jugar.
   searchNewGame() {
     // validar si ya existe partida vacia
 
@@ -17,13 +18,17 @@ export class PlaysService {
     // false
     this.newGame();
   }
+  // todo función para retornar el player 2 de una partida
+  assignPlayer2(idGame) {
+    // retornar el idGame y el player2 id de ese juego
+  }
 
   apiRequest() {
     this.http.get("http://localhost:8080/api/personas").subscribe(payload => {
       console.log(payload);
     });
   }
-  // Función para verificar si el disparo de hace al último zombiem del tablero
+  // Función para verificar si el disparo se hace al último zombie del tablero
   lastZombie(arrBoard) {
     let arrEndGame = [];
     arrBoard.forEach(element => {
@@ -31,7 +36,7 @@ export class PlaysService {
     });
     return arrEndGame.includes(1);
   }
-  //
+  //Guarda el nombre de los jugadores
   savePlayer(idPlayer, name, idGame) {
     this.plays.forEach(play => {
       if (play.id === idGame) {
@@ -45,10 +50,8 @@ export class PlaysService {
       }
     });
   }
-  assignPlayer2(idGame) {
-    // retornar el idGame y el player2 id de ese juego
-  }
 
+  //Función que genera un tablero según un número de columnas y filas dadas
   generateBoard(rows, columns) {
     let board = [];
     // this.playsservive.addGrid(rows, columns, "Nata");
@@ -62,6 +65,7 @@ export class PlaysService {
     return board;
   }
 
+  // Función que genera el json de una nueva partida con todos los campos necesarios
   newGame(rows = 10, columns = 10) {
     this.apiRequest();
     let game = {
@@ -71,7 +75,8 @@ export class PlaysService {
       player1: {
         id: this.getRandomId(),
         name: "",
-        score: 0,
+        score: 2,
+        turnNumber: 1,
         ready: false,
         selectedBoard: [],
         turn: true,
@@ -80,7 +85,8 @@ export class PlaysService {
       player2: {
         id: this.getRandomId(),
         name: "ROBOCOP",
-        score: 0,
+        score: 2,
+        turnNumber: 1,
         ready: false,
         selectedBoard: [
           [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -103,10 +109,12 @@ export class PlaysService {
     return { idGame: game.id, idPlayer: game.player1.id };
   }
 
+  // Función que retorna un id aleatorio de 6 dígitos
   getRandomId() {
     return Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
   }
 
+  // Función que retorna una partida del json de partidas según un id de juego entregado
   getPlay(idGame) {
     let out = [];
     this.plays.forEach(play => {
@@ -117,6 +125,7 @@ export class PlaysService {
     return out;
   }
 
+  //Función que guarda el tablero seleccionado por un jugador
   selectBoard(idGame, idPlayer, board) {
     this.plays.forEach(play => {
       if (play.id === idGame && play.player1.id === idPlayer) {
@@ -129,6 +138,8 @@ export class PlaysService {
     });
     console.log(this.plays);
   }
+
+  //Función que verifica el estatus de un jugador, si ya está listo o no para jugar.
   playerStatus(idGame, idPlayer) {
     let output = false;
     this.plays.forEach(play => {
@@ -141,8 +152,12 @@ export class PlaysService {
     return output;
   }
 
+  scoreCalcule() {}
+
+  // Función que verifica el disparo de un jugador y sus distintas posibilidades.
   shot(x, y, idGame, idPlayer) {
     // Verificar juego y jugador y que sea su turno
+
     this.plays.forEach(play => {
       if (
         play.id === idGame &&
@@ -154,9 +169,17 @@ export class PlaysService {
           if (play.player2.selectedBoard[x][y] === 1) {
             play.player1.playBoard[x][y] = 2;
             play.player2.selectedBoard[x][y] = 2;
+
+            // play.player1.score = Math.pow(
+            //   play.player1.score,
+            //   play.player1.turnNumber
+            // );
+            play.player1.score = play.player1.score * play.player1.turnNumber;
+            play.player1.turnNumber++;
           } else {
             play.player2.selectedBoard[x][y] = -1;
             console.log("no acertaste al barco");
+            play.player1.turnNumber = 1;
             play.player1.turn = false;
             play.player2.turn = true;
           }
@@ -176,9 +199,12 @@ export class PlaysService {
           if (play.player1.selectedBoard[x][y] === 1) {
             play.player2.playBoard[x][y] = 2;
             play.player1.selectedBoard[x][y] = 2;
+            play.player2.score = play.player2.score * play.player2.turnNumber;
+            play.player2.turnNumber++;
           } else {
             play.player1.selectedBoard[x][y] = -1;
             console.log("no acertaste al barco");
+            play.player2.turnNumber = 1;
             play.player2.turn = false;
             play.player1.turn = true;
           }

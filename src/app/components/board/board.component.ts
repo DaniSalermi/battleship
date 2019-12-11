@@ -18,6 +18,8 @@ export class BoardComponent implements OnInit {
   status: boolean;
   playBoard = [];
   playBoard2: any;
+  scorePlayer1 = 0;
+  scorePlayer2 = 0;
 
   constructor(private playsService: PlaysService) {
     this.generateBoard(this.rows, this.columns);
@@ -36,8 +38,10 @@ export class BoardComponent implements OnInit {
   selectPlayBoard(x, y) {
     if (this.currentGame.player1.turn) {
       this.playsService.shot(x, y, this.idGame, this.currentGame.player1.id);
+      this.scorePlayer1 = this.currentGame.player1.score;
     } else {
       this.playsService.shot(x, y, this.idGame, this.currentGame.player2.id);
+      this.scorePlayer2 = this.currentGame.player2.score;
     }
   }
 
