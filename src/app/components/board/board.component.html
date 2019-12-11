@@ -18,7 +18,14 @@
         <ng-container *ngFor="let tile of row; let j = index">
           <div
             (click)="selectTile(i, j)"
-            [ngStyle]="{ background: board[i][j] === 1 ? 'brown' : 'green' }"
+            [ngStyle]="{
+              background:
+                board[i][j] === 1
+                  ? 'brown'
+                  : colorTile[i][j] == 0
+                  ? 'green'
+                  : '#90EE90'
+            }"
           ></div>
         </ng-container>
       </ng-container>
