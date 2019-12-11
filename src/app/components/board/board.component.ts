@@ -21,6 +21,8 @@ export class BoardComponent implements OnInit {
   scorePlayer1 = 0;
   scorePlayer2 = 0;
   finishGame: boolean;
+  colorTile = [];
+  changeColor = 0;
 
   constructor(private playsService: PlaysService) {
     this.generateBoard(this.rows, this.columns);
@@ -62,9 +64,17 @@ export class BoardComponent implements OnInit {
   generateBoard(rows, columns) {
     for (let i = 0; i < rows; i++) {
       let row = [];
+      let probando = [];
       this.board.push(row);
+      this.colorTile.push(probando);
       for (let j = 0; j < columns; j++) {
         this.board[i].push(0);
+        if (this.changeColor == 0) {
+          this.changeColor = 1;
+        } else {
+          this.changeColor = 0;
+        }
+        this.colorTile[i].push(this.changeColor);
       }
     }
   }
