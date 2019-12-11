@@ -27,6 +27,11 @@ export class PlaysService {
     this.http.get("http://localhost:8080/api/personas").subscribe(payload => {
       console.log(payload);
     });
+    this.http
+      .post("http://localhost:8080/api/personas", { nombre: "Hector" })
+      .subscribe(response => {
+        console.log(response);
+      });
   }
   // Función para verificar si el disparo se hace al último zombie del tablero
   lastZombie(arrBoard) {
@@ -72,6 +77,7 @@ export class PlaysService {
       id: this.getRandomId(),
       rows,
       columns,
+      endGame: false,
       player1: {
         id: this.getRandomId(),
         name: "",
@@ -187,7 +193,8 @@ export class PlaysService {
           alert("Ya pegaste en ese espacio");
         }
         if (!this.lastZombie(play.player2.selectedBoard)) {
-          alert("Player 1 Ganaste!!!");
+          play.endGame = true;
+          alert("La partida ha terminado");
         }
       } else if (
         play.id === idGame &&
@@ -212,7 +219,8 @@ export class PlaysService {
           alert("Ya pegaste en ese espacio");
         }
         if (!this.lastZombie(play.player1.selectedBoard)) {
-          alert("Player 2 Ganaste!!!");
+          play.endGame = true;
+          alert("La partida ha terminado");
         }
       }
     });
