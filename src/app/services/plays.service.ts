@@ -1,12 +1,13 @@
 import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: "root"
 })
 export class PlaysService {
   private plays = [];
-  constructor() {}
-
+  constructor(private http: HttpClient) {}
+  // Función para saber si existe en la base de datos alguna partida vacía donde el player 2 pueda entrar a jugar.
   searchNewGame() {
     // validar si ya existe partida vacia
 
@@ -17,6 +18,12 @@ export class PlaysService {
     this.newGame();
   }
 
+  apiRequest() {
+    this.http.get("http://localhost:8080/api/personas").subscribe(payload => {
+      console.log(payload);
+    });
+  }
+  // Función para verificar si el disparo de hace al último zombiem del tablero
   lastZombie(arrBoard) {
     let arrEndGame = [];
     arrBoard.forEach(element => {
@@ -24,6 +31,7 @@ export class PlaysService {
     });
     return arrEndGame.includes(1);
   }
+  //
   savePlayer(idPlayer, name, idGame) {
     this.plays.forEach(play => {
       if (play.id === idGame) {
@@ -55,6 +63,7 @@ export class PlaysService {
   }
 
   newGame(rows = 10, columns = 10) {
+    this.apiRequest();
     let game = {
       id: this.getRandomId(),
       rows,
