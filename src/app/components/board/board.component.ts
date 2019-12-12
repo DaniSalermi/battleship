@@ -18,6 +18,9 @@ export class BoardComponent implements OnInit {
   status: boolean;
   playBoard = [];
   playBoard2: any;
+  scorePlayer1 = 0;
+  scorePlayer2 = 0;
+  finishGame: boolean;
   colorTile = [];
   changeColor = 0;
 
@@ -38,8 +41,12 @@ export class BoardComponent implements OnInit {
   selectPlayBoard(x, y) {
     if (this.currentGame.player1.turn) {
       this.playsService.shot(x, y, this.idGame, this.currentGame.player1.id);
+      this.scorePlayer1 = this.currentGame.player1.score;
+      this.finishGame = this.currentGame.endGame;
     } else {
       this.playsService.shot(x, y, this.idGame, this.currentGame.player2.id);
+      this.scorePlayer2 = this.currentGame.player2.score;
+      this.finishGame = this.currentGame.endGame;
     }
   }
 
@@ -60,14 +67,19 @@ export class BoardComponent implements OnInit {
       let probando = [];
       this.board.push(row);
       this.colorTile.push(probando);
+      if (this.changeColor == 0) {
+        this.changeColor = 1;
+      } else {
+        this.changeColor = 0;
+      }
       for (let j = 0; j < columns; j++) {
         this.board[i].push(0);
+        this.colorTile[i].push(this.changeColor);
         if (this.changeColor == 0) {
           this.changeColor = 1;
         } else {
           this.changeColor = 0;
         }
-        this.colorTile[i].push(this.changeColor);
       }
     }
   }
