@@ -1,3 +1,50 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 150px;
+  padding-bottom: 40px;
+  h1 {
+    font-family: "Luckiest Guy";
+    font-size: 40px;
+    color: var(--purple-battlezombie);
+    text-align: center;
+  }
+  img {
+    width: 200px;
+  }
+}
+.selecting-board {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.fill-information {
+  font-family: "Londrina Solid";
+  font-size: 31px;
+  color: var(--purple-battlezombie);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 80px;
+
+  .start-game-button {
+    border-radius: 35px;
+    background-color: var(--blue-battlezombie);
+    border: inherit;
+    padding: 20px 148px;
+    font-family: "Londrina Solid";
+    font-size: 31px;
+    color: var(--purple-battlezombie);
+  }
+  .input-name {
+    border: solid 1px var(--blue-battlezombie);
+    border-radius: 5px;
+    height: 76px;
+    width: 100%;
+    font-family: "Londrina Solid";
+    font-size: 31px;
+  }
+}
 .board {
   display: grid;
   width: 500px;
@@ -5,11 +52,81 @@
 }
 .container {
   display: flex;
-  margin: 20px;
+  padding: 0 150px;
 }
 .playboard {
   margin-left: 100px;
   display: grid;
   width: 500px;
   height: 500px;
+}
+
+@media (max-width: 1000px) {
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    h1 {
+      font-family: "Luckiest Guy";
+      font-size: 35px;
+      color: var(--purple-battlezombie);
+      text-align: center;
+    }
+  }
+  .selecting-board {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .fill-information {
+    width: 80%;
+    padding: 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    h1 {
+      font-family: "Luckiest Guy";
+      font-size: 15px;
+      color: var(--purple-battlezombie);
+      text-align: center;
+    }
+    img {
+      width: 120px;
+    }
+  }
+  .board {
+    display: grid;
+    width: 320px;
+    height: 320px;
+  }
+}
+
+@media (max-width: 325px) {
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    h1 {
+      font-family: "Luckiest Guy";
+      font-size: 12px;
+      color: var(--purple-battlezombie);
+      text-align: center;
+    }
+    img {
+      width: 100px;
+    }
+  }
+  .board {
+    display: grid;
+    width: 300px;
+    height: 300px;
+  }
 }
