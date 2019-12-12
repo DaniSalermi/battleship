@@ -1,0 +1,13 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--blue-battlezombie);
+  height: 152px;
+  margin-top: 40px;
+  h4 {
+    font-size: 20px;
+    color: white;
+    padding-left: 12px;
+  }
+}

@@ -6,8 +6,10 @@ import { AppComponent } from "./app.component";
 import { BoardComponent } from "./components/board/board.component";
 import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 @NgModule({
-  declarations: [AppComponent, BoardComponent],
+  declarations: [AppComponent, BoardComponent, HeaderComponent, FooterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
