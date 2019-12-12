@@ -2,11 +2,6 @@
   display: grid;
   width: 500px;
   height: 500px;
-  gap: 10px;
-  div {
-    border: 2px solid black;
-    background-color: green;
-  }
 }
 .container {
   display: flex;
@@ -17,9 +12,4 @@
   display: grid;
   width: 500px;
   height: 500px;
-  gap: 10px;
-  div {
-    border: 2px solid black;
-    background-color: white;
-  }
 }
