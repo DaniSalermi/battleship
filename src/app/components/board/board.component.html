@@ -21,16 +21,17 @@
             [ngStyle]="{
               background:
                 board[i][j] === 1
-                  ? 'brown'
+                  ? 'url(../assets/chancho.png)'
                   : colorTile[i][j] == 0
-                  ? 'green'
-                  : '#90EE90'
+                  ? 'url(../assets/gramaclara.png)'
+                  : 'url(../assets/gramaoscura.png)',
+              'background-size': 'cover'
             }"
           ></div>
         </ng-container>
       </ng-container>
     </div>
-    <div>
+    <div class="margin-top">
       <button (click)="startGame()">Iniciar Juego</button>
     </div>
   </div>
@@ -57,12 +58,15 @@
             [ngStyle]="{
               background:
                 currentGame.player1.selectedBoard[i][j] === 1
-                  ? 'brown'
+                  ? 'url(../assets/zombie.png)'
                   : currentGame.player1.selectedBoard[i][j] === -1
                   ? 'blue'
                   : currentGame.player1.selectedBoard[i][j] === 2
                   ? 'purple'
-                  : 'green'
+                  : colorTile[i][j] == 0
+                  ? 'url(../assets/fondo1.png)'
+                  : 'url(../assets/fondo2.png)',
+              'background-size': 'cover'
             }"
           ></div>
         </ng-container>
@@ -85,10 +89,13 @@
             [ngStyle]="{
               background:
                 playBoard[i][j] === 1
-                  ? 'yellow'
+                  ? 'url(../assets/muerto.png)'
                   : playBoard[i][j] === 2
-                  ? 'brown'
-                  : 'white'
+                  ? 'url(../assets/zombie.jpg)'
+                  : colorTile[i][j] == 0
+                  ? 'url(../assets/fondo1.png)'
+                  : 'url(../assets/fondo2.png)',
+              'background-size': 'cover'
             }"
           ></div>
         </ng-container>
@@ -117,12 +124,15 @@
             [ngStyle]="{
               background:
                 currentGame.player2.selectedBoard[i][j] === 1
-                  ? 'brown'
+                  ? 'url(../assets/zombie.jpg)'
                   : currentGame.player2.selectedBoard[i][j] === -1
                   ? 'blue'
                   : currentGame.player2.selectedBoard[i][j] === 2
                   ? 'purple'
-                  : 'green'
+                  : colorTile[i][j] == 0
+                  ? 'url(../assets/fondo1.png)'
+                  : 'url(../assets/fondo2.png)',
+              'background-size': 'cover'
             }"
           ></div>
         </ng-container>
@@ -148,7 +158,10 @@
                   ? 'yellow'
                   : playBoard2[i][j] === 2
                   ? 'brown'
-                  : 'white'
+                  : colorTile[i][j] == 0
+                  ? 'url(../assets/fondo1.png)'
+                  : 'url(../assets/fondo2.png)',
+              'background-size': 'cover'
             }"
           ></div>
         </ng-container>

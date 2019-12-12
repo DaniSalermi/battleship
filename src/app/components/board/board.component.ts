@@ -72,14 +72,19 @@ export class BoardComponent implements OnInit {
       let probando = [];
       this.board.push(row);
       this.colorTile.push(probando);
+      if (this.changeColor == 0) {
+        this.changeColor = 1;
+      } else {
+        this.changeColor = 0;
+      }
       for (let j = 0; j < columns; j++) {
         this.board[i].push(0);
+        this.colorTile[i].push(this.changeColor);
         if (this.changeColor == 0) {
           this.changeColor = 1;
         } else {
           this.changeColor = 0;
         }
-        this.colorTile[i].push(this.changeColor);
       }
     }
   }
