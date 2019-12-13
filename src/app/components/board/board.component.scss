@@ -2,6 +2,9 @@
   display: grid;
   width: 500px;
   height: 500px;
+  div{
+    height:50px !important;
+  }
 }
 .container {
   display: flex;
@@ -12,4 +15,7 @@
   display: grid;
   width: 500px;
   height: 500px;
+}
+.click{
+  width: 100%;
 }

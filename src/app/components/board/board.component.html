@@ -20,14 +20,15 @@
             (click)="selectTile(i, j)"
             [ngStyle]="{
               background:
-                board[i][j] === 1
-                  ? 'url(../assets/chancho.png)'
-                  : colorTile[i][j] == 0
-                  ? 'url(../assets/gramaclara.png)'
-                  : 'url(../assets/gramaoscura.png)',
-              'background-size': 'cover'
+                colorTile[i][j] == 0
+                  ? 'url(../assets/gramaclara.png) 0% 0% / cover'
+                  : 'url(../assets/gramaoscura.png) 0% 0% / cover'
             }"
-          ></div>
+          >
+        
+          <img *ngIf="board[i][j]==1" src="../assets/zombie.png" class="click">
+        
+        </div>
         </ng-container>
       </ng-container>
     </div>
@@ -64,11 +65,13 @@
                   : currentGame.player1.selectedBoard[i][j] === 2
                   ? 'purple'
                   : colorTile[i][j] == 0
-                  ? 'url(../assets/fondo1.png)'
-                  : 'url(../assets/fondo2.png)',
-              'background-size': 'cover'
+                  ? 'url(../assets/gramaclara.png) 0% 0% / cover'
+                  : 'url(../assets/gramaoscura.png) 0% 0% / cover'
+              
             }"
-          ></div>
+          >
+          <img *ngIf="board[i][j]==1" src="../assets/zombie.png" class="click">
+        </div>
         </ng-container>
       </ng-container>
     </div>
@@ -93,9 +96,9 @@
                   : playBoard[i][j] === 2
                   ? 'url(../assets/zombie.jpg)'
                   : colorTile[i][j] == 0
-                  ? 'url(../assets/fondo1.png)'
-                  : 'url(../assets/fondo2.png)',
-              'background-size': 'cover'
+                  ? 'url(../assets/gramaclara.png) 0% 0% / cover'
+                  : 'url(../assets/gramaoscura.png) 0% 0% / cover'
+            
             }"
           ></div>
         </ng-container>
@@ -130,9 +133,9 @@
                   : currentGame.player2.selectedBoard[i][j] === 2
                   ? 'purple'
                   : colorTile[i][j] == 0
-                  ? 'url(../assets/fondo1.png)'
-                  : 'url(../assets/fondo2.png)',
-              'background-size': 'cover'
+                  ? 'url(../assets/gramaclara.png) 0% 0% / cover'
+                  : 'url(../assets/gramaoscura.png) 0% 0% / cover'
+            
             }"
           ></div>
         </ng-container>
@@ -159,9 +162,9 @@
                   : playBoard2[i][j] === 2
                   ? 'brown'
                   : colorTile[i][j] == 0
-                  ? 'url(../assets/fondo1.png)'
-                  : 'url(../assets/fondo2.png)',
-              'background-size': 'cover'
+                  ? 'url(../assets/gramaclara.png) 0% 0% / cover'
+                  : 'url(../assets/gramaoscura.png) 0% 0% / cover'
+              
             }"
           ></div>
         </ng-container>
