@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "rows": null,
+    "columns": null,
+    "player1": {
+      "name": "Nata",
+      "score": null,
+      "ready": false,
+      "selectedBoard": {
+        "x": [],
+        "y": []
+      },
+      "playBoard": []
+    },
+    "player2": {
+      "name": null,
+      "score": null,
+      "ready": false,
+      "selectedBoard": [],
+      "playBoard": []
+    }
+  }
+]
