@@ -1,6 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { PlaysService } from "src/app/services/plays.service";
 import { FormControl } from "@angular/forms";
+import { NgxSmartModalService } from "ngx-smart-modal";
 
 @Component({
   selector: "app-board",
@@ -8,6 +9,8 @@ import { FormControl } from "@angular/forms";
   styleUrls: ["./board.component.scss"]
 })
 export class BoardComponent implements OnInit {
+  @ViewChild("winner", { static: false }) winner: ElementRef<any>;
+  ZOMBIES_NEEDED = 2;
   name = new FormControl("");
   currentGame: any = {};
   board = [];
@@ -24,23 +27,24 @@ export class BoardComponent implements OnInit {
   colorTile = [];
   changeColor = 0;
 
-  constructor(private playsService: PlaysService) {
+  constructor(
+    private playsService: PlaysService,
+    public modal: NgxSmartModalService
+  ) {
     this.generateBoard(this.rows, this.columns);
   }
 
-  ngOnInit() {
-    // this.status = this.playsService.playerStatus(this.idGame, this.idPlayer);
-    // this.playsService.getGameStatus(564644, 977766, 1).subscribe(payload => {
-    //   console.log(payload);
-    // });
-    // this.playsService.sendShot(564644, 977766, 1, 0, 0).subscribe(payload => {
-    //   console.log(payload);
-    // });
-  }
+  ngOnInit() {}
 
   selectTile(x, y) {
-    this.board[x][y] = 1;
+    if (
+      this.quantityOfZombies(this.board) < this.ZOMBIES_NEEDED ||
+      this.board[x][y] === 1
+    ) {
+      this.board[x][y] = this.board[x][y] === 1 ? 0 : 1;
+    }
   }
+
   selectPlayBoard(x, y) {
     this.playsService
       .sendShot(this.idGame, this.idPlayer, this.playerNumber, x, y)
@@ -56,6 +60,9 @@ export class BoardComponent implements OnInit {
         console.log(payload);
         this.currentGame = payload;
         this.status = true;
+        if (this.currentGame.endGame) {
+          this.winner.nativeElement.click();
+        }
       });
   }
 
@@ -64,14 +71,41 @@ export class BoardComponent implements OnInit {
   }
 
   startGame() {
-    this.playsService
-      .selectBoard(this.idGame, this.idPlayer, this.board, this.name.value)
-      .subscribe((e: any) => {
-        this.idGame = e.id;
-        this.idPlayer = e.playerId;
-        this.playerNumber = e.player;
-        this.getGame();
+    if (this.name.value === "") {
+      alert("Necesitas colocar tu nombre");
+    }
+    if (this.quantityOfZombies(this.board) !== this.ZOMBIES_NEEDED) {
+      alert(
+        `necesitas al menos ${
+          this.ZOMBIES_NEEDED
+        } zombies y tienes ${this.quantityOfZombies(this.board)}`
+      );
+    }
+    if (
+      this.name.value !== "" &&
+      this.quantityOfZombies(this.board) === this.ZOMBIES_NEEDED
+    ) {
+      this.playsService
+        .selectBoard(this.idGame, this.idPlayer, this.board, this.name.value)
+        .subscribe((e: any) => {
+          this.idGame = e.id;
+          this.idPlayer = e.playerId;
+          this.playerNumber = e.player;
+          this.getGame();
+        });
+    }
+  }
+
+  quantityOfZombies(board) {
+    let count = 0;
+    board.forEach(row => {
+      row.forEach(tile => {
+        if (tile === 1) {
+          count++;
+        }
       });
+    });
+    return count;
   }
 
   generateBoard(rows, columns) {

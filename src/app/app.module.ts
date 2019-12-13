@@ -6,16 +6,24 @@ import { AppComponent } from "./app.component";
 import { BoardComponent } from "./components/board/board.component";
 import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from "./components/header/header.component";
+import { FooterComponent } from "./components/footer/footer.component";
+import { NgxSmartModalModule } from "ngx-smart-modal";
+
 @NgModule({
-  declarations: [AppComponent, BoardComponent, HeaderComponent, FooterComponent],
+  declarations: [
+    AppComponent,
+    BoardComponent,
+    HeaderComponent,
+    FooterComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSmartModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

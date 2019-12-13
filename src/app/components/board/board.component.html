@@ -59,8 +59,18 @@
 
 <ng-container *ngIf="status">
   <h1>{{ currentGame.player.name }}</h1>
-  <h1>Puntuación: {{ currentGame.player.score }}</h1>
-  <h2>({{ currentGame.player.turn ? "Es tu turno" : "Espera tu turno" }})</h2>
+  <h1 (click)="modal.getModal('winnerModal').open()" #winner>
+    Puntuación: {{ currentGame.player.score }}
+  </h1>
+  <h2>
+    ({{
+      currentGame.rival.name
+        ? currentGame.player.turn
+          ? "Es tu turno"
+          : "Espera tu turno"
+        : "Esperando player 2"
+    }})
+  </h2>
   <h3>{{ currentGame.rival.name }}</h3>
   <div class="container">
     <!-- board blocked Player 1-->
@@ -157,3 +167,28 @@
 <ng-container *ngIf="finishGame">
   <h1>TERMINO LA PARTIDA</h1>
 </ng-container>
+
+<ngx-smart-modal #winnerModal identifier="winnerModal">
+  <h1>¡Termino la partida!</h1>
+  <h2>
+    El ganador es:
+    {{
+      currentGame.player.score > currentGame.rival.score
+        ? currentGame.player.name
+        : currentGame.rival.name
+    }}<br />
+    puntuación:
+    {{
+      currentGame.player.score > currentGame.rival.score
+        ? currentGame.player.score
+        : currentGame.rival.score
+    }}
+  </h2>
+
+  <br /><br />
+  <a href="/">
+    <button class="start-game-button">
+      Nueva Partida
+    </button>
+  </a>
+</ngx-smart-modal>
