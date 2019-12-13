@@ -58,6 +58,7 @@
 .playboard {
   user-select: none;
   margin-left: 0px;
+
   display: grid;
   width: 500px;
   height: 500px;
@@ -96,6 +97,7 @@
   h2 {
     font-size: 24px;
   }
+
   .selecting-board {
     display: flex;
     flex-direction: column-reverse;
@@ -206,4 +208,5 @@
       padding: 10px 50px;
     }
   }
+
 }

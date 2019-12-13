@@ -58,7 +58,7 @@
 </div>
 
 <ng-container *ngIf="status">
-  <div class="desktopInfo">
+<div class="desktopInfo">
     <h2>Tu eres: {{ currentGame.player.name }}</h2>
     <h2 (click)="modal.getModal('winnerModal').open()" #winner>
       Tu puntuación es: {{ currentGame.player.score }}
@@ -123,6 +123,7 @@
         </ng-container>
       </ng-container>
     </div>
+
     <div class="desktopInfo turnNotifier">
       <img
         src="/assets/zombie-hand.svg"
@@ -201,6 +202,7 @@
 </ng-container>
 
 <!-- Modal, realiazado con la librería ngx-smart-modal-->
+
 <ngx-smart-modal #winnerModal identifier="winnerModal">
   <h1>¡Termino la partida!</h1>
   <h2>
