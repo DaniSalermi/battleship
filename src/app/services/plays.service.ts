@@ -8,12 +8,12 @@ import { flatMap } from "rxjs/operators";
 })
 export class PlaysService {
   private plays = [];
-  private urlApi = "http://localhost:4000/api";
+  private urlApi = "https://battlezombie-backend.herokuapp.com/api";
 
   constructor(private http: HttpClient) {}
 
   getGameStatus(idGame, idPlayer, playerNumber) {
-    return timer(0, 10000).pipe(
+    return timer(0, 1000).pipe(
       flatMap(() => {
         return this.http.get(
           `${this.urlApi}/get-game/${idGame}/${idPlayer}/${playerNumber}`
@@ -121,20 +121,9 @@ export class PlaysService {
 
   //Función que guarda el tablero seleccionado por un jugador
   selectBoard(idGame, idPlayer, board, playerName) {
-    this.http
-      .post(`${this.urlApi}/select-board`, { board, playerName })
-      .subscribe();
-    this.plays.forEach(play => {
-      if (play.id === idGame && play.player1.id === idPlayer) {
-        play.player1.ready = true;
-        play.player1.selectedBoard = board;
-      } else if (play.id === idGame && play.player2.id === idPlayer) {
-        play.player2.ready = true;
-        play.player2.selectedBoard = board;
-      }
-    });
-    console.log(this.plays);
+    return this.http.post(`${this.urlApi}/select-board`, { board, playerName });
   }
+
   sendShot(idGame, idPlayer, playerNumber, xPosition, yPosition) {
     return this.http.post(`${this.urlApi}/shot`, {
       idGame,

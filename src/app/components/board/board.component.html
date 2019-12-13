@@ -29,21 +29,27 @@
           gridTemplateRows: 'repeat(' + rows + ', 1fr)'
         }"
       >
-        <ng-container *ngFor="let row of board; let i = index">
-          <ng-container *ngFor="let tile of row; let j = index">
-            <div
-            (click)="selectTile(i, j)"
-            [ngStyle]="{
-              background:
-                colorTile[i][j] == 0
-                  ? 'url(../assets/gramaclara.png) 0% 0% / cover'
-                  : 'url(../assets/gramaoscura.png) 0% 0% / cover'
-            }"
+        <ng-container
+          *ngFor="let row of board; let i = index; trackBy: trackElement"
+        >
+          <ng-container
+            *ngFor="let tile of row; let j = index; trackBy: trackElement"
           >
-        
-          <img *ngIf="board[i][j]==1" src="../assets/zombie.png" class="click">
-        
-        </div>
+            <div
+              (click)="selectTile(i, j)"
+              [ngStyle]="{
+                background:
+                  colorTile[i][j] == 0
+                    ? 'url(../assets/gramaclara.png) 0% 0% / cover'
+                    : 'url(../assets/gramaoscura.png) 0% 0% / cover'
+              }"
+            >
+              <img
+                *ngIf="board[i][j] == 1"
+                src="../assets/zombie.png"
+                class="click"
+              />
+            </div>
           </ng-container>
         </ng-container>
       </div>
@@ -52,9 +58,10 @@
 </div>
 
 <ng-container *ngIf="status">
-  <h1>{{ currentGame.player1.name }}</h1>
-  <h1>Puntuación: {{ scorePlayer1 }}</h1>
-  <h2>({{ currentGame.player1.turn ? "Es tu turno" : "Espera tu turno" }})</h2>
+  <h1>{{ currentGame.player.name }}</h1>
+  <h1>Puntuación: {{ currentGame.player.score }}</h1>
+  <h2>({{ currentGame.player.turn ? "Es tu turno" : "Espera tu turno" }})</h2>
+  <h3>{{ currentGame.rival.name }}</h3>
   <div class="container">
     <!-- board blocked Player 1-->
     <div
@@ -65,25 +72,39 @@
       }"
     >
       <ng-container
-        *ngFor="let rowGame of currentGame.player1.selectedBoard; let i = index"
+        *ngFor="
+          let rowGame of currentGame.player.selectedBoard;
+          let i = index;
+          trackBy: trackElement
+        "
       >
-        <ng-container *ngFor="let gameTile of rowGame; let j = index">
+        <ng-container
+          *ngFor="let gameTile of rowGame; let j = index; trackBy: trackElement"
+        >
           <div
             [ngStyle]="{
               background:
-                  colorTile[i][j] == 0
+                colorTile[i][j] == 0
                   ? 'url(../assets/gramaclara.png) 0% 0% / cover'
                   : 'url(../assets/gramaoscura.png) 0% 0% / cover'
             }"
           >
-          <img *ngIf=" currentGame.player1.selectedBoard[i][j] === 1" src="../assets/zombie.png" class="click">
-          <img *ngIf=" currentGame.player1.selectedBoard[i][j] === -1" src="../assets/no-hit-on-zombie-icon.svg" class="click">
-          <img *ngIf=" currentGame.player1.selectedBoard[i][j] === 2" src="../assets/hit-on-zombie-icon.svg" class="click">
-
-
-          
-          
-        </div>
+            <img
+              *ngIf="currentGame.player.selectedBoard[i][j] === 1"
+              src="../assets/zombie.png"
+              class="click"
+            />
+            <img
+              *ngIf="currentGame.player.selectedBoard[i][j] === 2"
+              src="../assets/no-hit-on-zombie-icon.svg"
+              class="click"
+            />
+            <img
+              *ngIf="currentGame.player.selectedBoard[i][j] === -1"
+              src="../assets/hit-on-zombie-icon.svg"
+              class="click"
+            />
+          </div>
         </ng-container>
       </ng-container>
     </div>
@@ -97,8 +118,16 @@
         gridTemplateRows: 'repeat(' + rows + ', 1fr)'
       }"
     >
-      <ng-container *ngFor="let rowGame of playBoard; let i = index">
-        <ng-container *ngFor="let gameTile of rowGame; let j = index">
+      <ng-container
+        *ngFor="
+          let rowGame of currentGame.player.playBoard;
+          let i = index;
+          trackBy: trackElement
+        "
+      >
+        <ng-container
+          *ngFor="let gameTile of rowGame; let j = index; trackBy: trackElement"
+        >
           <div
             (click)="selectPlayBoard(i, j)"
             [ngStyle]="{
@@ -106,77 +135,19 @@
                 colorTile[i][j] == 0
                   ? 'url(../assets/gramaclara.png) 0% 0% / cover'
                   : 'url(../assets/gramaoscura.png) 0% 0% / cover'
-            
             }"
           >
-
-          <img *ngIf=" playBoard[i][j] === 1" src="../assets/no-hit-on-zombie-icon.svg" class="click">
-          <img *ngIf=" playBoard[i][j] === 2" src="../assets/hit-on-zombie-icon.svg" class="click">
-        
-        </div>
-        </ng-container>
-      </ng-container>
-    </div>
-  </div>
-  <hr />
-
-  <h1>{{ currentGame.player2.name }}</h1>
-  <h1>Puntuación: {{ scorePlayer2 }}</h1>
-  <h2>({{ currentGame.player2.turn ? "Es tu turno" : "Espera tu turno" }})</h2>
-  <div class="container">
-    <!-- board blocked Player 2-->
-    <div
-      class="board"
-      [ngStyle]="{
-        gridTemplateColumns: 'repeat(' + columns + ', 1fr)',
-        gridTemplateRows: 'repeat(' + rows + ', 1fr)'
-      }"
-    >
-      <ng-container
-        *ngFor="let rowGame of currentGame.player2.selectedBoard; let i = index"
-      >
-        <ng-container *ngFor="let gameTile of rowGame; let j = index">
-          <div
-            [ngStyle]="{
-              background:
-           colorTile[i][j] == 0
-                  ? 'url(../assets/gramaclara.png) 0% 0% / cover'
-                  : 'url(../assets/gramaoscura.png) 0% 0% / cover'
-            
-            }"
-          >
-          <img *ngIf=" currentGame.player2.selectedBoard[i][j] === 1" src="../assets/zombie.png" class="click">
-          <img *ngIf=" currentGame.player2.selectedBoard[i][j] === -1" src="../assets/no-hit-on-zombie-icon.svg" class="click">
-          <img *ngIf=" currentGame.player2.selectedBoard[i][j] === 2" src="../assets/hit-on-zombie-icon.svg" class="click">
-        </div>
-        </ng-container>
-      </ng-container>
-    </div>
-
-    <!-- PLayboard player 2 -->
-
-    <div
-      class="playboard"
-      [ngStyle]="{
-        gridTemplateColumns: 'repeat(' + columns + ', 1fr)',
-        gridTemplateRows: 'repeat(' + rows + ', 1fr)'
-      }"
-    >
-      <ng-container *ngFor="let rowGame of playBoard2; let i = index">
-        <ng-container *ngFor="let gameTile of rowGame; let j = index">
-          <div
-            (click)="selectPlayBoard(i, j)"
-            [ngStyle]="{
-              background:
-               colorTile[i][j] == 0
-                  ? 'url(../assets/gramaclara.png) 0% 0% / cover'
-                  : 'url(../assets/gramaoscura.png) 0% 0% / cover'
-              
-            }"
-          >
-          <img *ngIf=" playBoard2[i][j] === 1" src="../assets/no-hit-on-zombie-icon.svg" class="click">
-          <img *ngIf=" playBoard2[i][j] === 2" src="../assets/hit-on-zombie-icon.svg" class="click">
-        </div>
+            <img
+              *ngIf="currentGame.player.playBoard[i][j] === 2"
+              src="../assets/no-hit-on-zombie-icon.svg"
+              class="click"
+            />
+            <img
+              *ngIf="currentGame.player.playBoard[i][j] === 1"
+              src="../assets/hit-on-zombie-icon.svg"
+              class="click"
+            />
+          </div>
         </ng-container>
       </ng-container>
     </div>

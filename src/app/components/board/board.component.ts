@@ -15,9 +15,9 @@ export class BoardComponent implements OnInit {
   columns = 10;
   idGame = null;
   idPlayer = null;
+  playerNumber = null;
   status: boolean;
   playBoard = [];
-  playBoard2: any;
   scorePlayer1 = 0;
   scorePlayer2 = 0;
   finishGame: boolean;
@@ -29,49 +29,51 @@ export class BoardComponent implements OnInit {
   }
 
   ngOnInit() {
-    let game = this.playsService.newGame();
-    this.idGame = game.idGame;
-    this.idPlayer = game.idPlayer;
-    this.status = this.playsService.playerStatus(this.idGame, this.idPlayer);
-    this.playsService.getGameStatus(564644, 977766, 1).subscribe(payload => {
-      console.log(payload);
-    });
-    this.playsService.sendShot(564644, 977766, 1, 0, 0).subscribe(payload => {
-      console.log(payload);
-    });
+    // this.status = this.playsService.playerStatus(this.idGame, this.idPlayer);
+    // this.playsService.getGameStatus(564644, 977766, 1).subscribe(payload => {
+    //   console.log(payload);
+    // });
+    // this.playsService.sendShot(564644, 977766, 1, 0, 0).subscribe(payload => {
+    //   console.log(payload);
+    // });
   }
 
   selectTile(x, y) {
     this.board[x][y] = 1;
   }
   selectPlayBoard(x, y) {
-    if (this.currentGame.player1.turn) {
-      this.playsService.shot(x, y, this.idGame, this.currentGame.player1.id);
-      this.scorePlayer1 = this.currentGame.player1.score;
-      this.finishGame = this.currentGame.endGame;
-    } else {
-      this.playsService.shot(x, y, this.idGame, this.currentGame.player2.id);
-      this.scorePlayer2 = this.currentGame.player2.score;
-      this.finishGame = this.currentGame.endGame;
-    }
+    this.playsService
+      .sendShot(this.idGame, this.idPlayer, this.playerNumber, x, y)
+      .subscribe(payload => {
+        console.log(payload);
+      });
+  }
+
+  getGame() {
+    this.playsService
+      .getGameStatus(this.idGame, this.idPlayer, this.playerNumber)
+      .subscribe(payload => {
+        console.log(payload);
+        this.currentGame = payload;
+        this.status = true;
+      });
+  }
+
+  trackElement(index: number, element: any) {
+    return element ? element.guid : null;
   }
 
   startGame() {
-    this.playsService.selectBoard(
-      this.idGame,
-      this.idPlayer,
-      this.board,
-      this.name.value
-    );
-    this.status = this.playsService.playerStatus(this.idGame, this.idPlayer);
-    this.currentGame = this.playsService.getPlay(this.idGame);
-    this.playBoard = this.currentGame.player1.playBoard;
-    this.playBoard2 = this.currentGame.player2.playBoard;
-    this.playerName();
+    this.playsService
+      .selectBoard(this.idGame, this.idPlayer, this.board, this.name.value)
+      .subscribe((e: any) => {
+        this.idGame = e.id;
+        this.idPlayer = e.playerId;
+        this.playerNumber = e.player;
+        this.getGame();
+      });
   }
-  playerName() {
-    this.playsService.savePlayer(this.idPlayer, this.name.value, this.idGame);
-  }
+
   generateBoard(rows, columns) {
     for (let i = 0; i < rows; i++) {
       let row = [];

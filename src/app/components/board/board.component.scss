@@ -34,11 +34,11 @@
   display: grid;
   width: 500px;
   height: 500px;
-  div{
-    height:50px !important;
+  div {
+    height: 50px !important;
   }
 }
-.click{
+.click {
   width: 100%;
 }
 .container {
@@ -50,6 +50,16 @@
   display: grid;
   width: 500px;
   height: 500px;
+
+  div {
+    &:nth-child(1n) {
+      background: url("/assets/gramaclara.png") 0% 0% / cover;
+    }
+
+    &:nth-child(2n) {
+      background: url("/assets/gramaoscura.png") 0% 0% / cover;
+    }
+  }
 }
 
 @media (max-width: 1000px) {
@@ -70,11 +80,11 @@
     display: grid;
     width: 320px;
     height: 320px;
-    div{
-      height:50px !important;
+    div {
+      height: 50px !important;
     }
   }
-  .click{
+  .click {
     width: 100%;
   }
 }
@@ -99,11 +109,11 @@
     display: grid;
     width: 300px;
     height: 300px;
-    div{
-      height:50px !important;
+    div {
+      height: 50px !important;
     }
   }
-  .click{
+  .click {
     width: 100%;
   }
 }
