@@ -2,7 +2,7 @@
 
 Este proyecto forma parte de nuestro programa de formación profesional con Laboratoria.
 Se trata de recrear el juego Battleship (Batalla naval) con la finalidad de poner a prueba nuestros conocimientos en base de datos y desarrollo web.
-El proyecto se hizo con mentores de la empresa **Concrete**, los cuales nos ayudaron con procesos de desarrollo y toma de decisiones.
+El proyecto se hizo con mentores de la empresa *Concrete*, los cuales nos ayudaron con procesos de desarrollo y toma de decisiones.
 
 ## ¿Qué es?
 
@@ -12,7 +12,7 @@ El juego es para dos personas. Consiste en que en un tablero cada jugador coloca
 
 En este proyecto debemos crear una nueva versión, agregándole algún giro para actualizarlo y hacerlo más atractivo para las nuevas generaciones. También, no estuvimos atada a hacer este juego sobre barcos, se puede hacer con el tema que más nos guste, siempre y cuando el modo de juego sea parecido.
 
-También el juego debe ser para dos jugadores, para lograrlo debimos pensar en cómo estructurar la información, estado de la aplicación y cómo guardarlos en alguna base de datos como **Firebase** o **MongoDB Stitch**.
+También el juego debe ser para dos jugadores, para lograrlo debimos pensar en cómo estructurar la información, estado de la aplicación y cómo guardarlos en alguna base de datos como *Firebase* o *MongoDB Stitch*.
 
 # Estudio de usuarios
 
@@ -85,3 +85,28 @@ Posterior al estudio de usuarios, realizamos una investigación para conocer sob
 Una vez que establecimos los requerimientos del los usuario y realizamos el benchamark de las aplicaciones tanto para web como para móvil, diseñamos el flujo del usuario dentro de la aplicación, para facilitar la toma de decisiones dentro del código.
 
 <a href="https://ibb.co/ZXhw7gv"><img src="https://i.ibb.co/QQ6qtHh/Flujo-de-la-aplicaci-n.png" alt="Flujo-de-la-aplicaci-n" ></a><br /><a target='_blank' href='https://es.imgbb.com/'></a><br />
+
+# Prototipo de baja fidelidad
+
+De acuerdo a las historias de usuarios, fuimos creando distintos sketch para llevar a cabo nuestra primera App de videojuegos.
+image
+image
+image
+
+# Prototipo de Alta fidelidad
+
+Finalmente, después de analizar propotipos de baja, y solicitar feedback de diferentes usuarios, diseñamos una pagina amigable, fácil de usar, con el objetivo de simplificar las tareas del ususario. A continuación se puede ver el diseño desarrollado en herramienta Adobe XD.
+
+<a href="https://ibb.co/NywDG2k"><img src="https://i.ibb.co/QKsSxvq/1.jpg" alt="1" ></a><br /><a target='_blank' href='https://es.imgbb.com/'>upload pictures</a>
+
+<a href="https://ibb.co/cTtk3Rs"><img src="https://i.ibb.co/9Y2cgBd/2.jpg" alt="2" ></a><br /><a target='_blank' href='https://es.imgbb.com/'>upload pictures</a>
+
+<a href="https://ibb.co/bbxDwWT"><img src="https://i.ibb.co/nPTtdg9/3.jpg" alt="3" ></a><br /><a target='_blank' href='https://es.imgbb.com/'>upload pictures</a>
+
+<a href="https://ibb.co/LrdwdLz"><img src="https://i.ibb.co/8bg3gWD/4.jpg" alt="4" ></a><br /><a target='_blank' href='https://es.imgbb.com/'>upload pictures</a>
+
+<a href="https://ibb.co/VWMSLtM"><img src="https://i.ibb.co/jv3M8T3/5.jpg" alt="5" ></a><br /><a target='_blank' href='https://es.imgbb.com/'>upload pictures</a>
+
+<a href="https://ibb.co/CHFtdgp"><img src="https://i.ibb.co/P68YpKs/6.jpg" alt="6" ></a><br /><a target='_blank' href='https://es.imgbb.com/'>upload pictures</a>
+
+<a href="https://ibb.co/j8gJ4dz"><img src="https://i.ibb.co/3TBRhwv/7.jpg" alt="7" ></a><br /><a target='_blank' href='https://es.imgbb.com/'>upload pictures</a>
