@@ -33,6 +33,12 @@ export class BoardComponent implements OnInit {
     this.idGame = game.idGame;
     this.idPlayer = game.idPlayer;
     this.status = this.playsService.playerStatus(this.idGame, this.idPlayer);
+    this.playsService.getGameStatus(564644, 977766, 1).subscribe(payload => {
+      console.log(payload);
+    });
+    this.playsService.sendShot(564644, 977766, 1, 0, 0).subscribe(payload => {
+      console.log(payload);
+    });
   }
 
   selectTile(x, y) {

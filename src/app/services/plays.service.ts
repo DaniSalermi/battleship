@@ -1,39 +1,27 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { interval, timer } from "rxjs";
+import { flatMap } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root"
 })
 export class PlaysService {
   private plays = [];
-  private urlApi = "http://localhost:4000";
+  private urlApi = "http://localhost:4000/api";
 
   constructor(private http: HttpClient) {}
-  // todo Función para saber si existe en la base de datos alguna partida vacía donde el player 2 pueda entrar a jugar.
-  searchNewGame() {
-    // validar si ya existe partida vacia
 
-    // true
-    this.assignPlayer2(10);
-
-    // false
-    this.newGame();
-  }
-  // todo función para retornar el player 2 de una partida
-  assignPlayer2(idGame) {
-    // retornar el idGame y el player2 id de ese juego
+  getGameStatus(idGame, idPlayer, playerNumber) {
+    return timer(0, 10000).pipe(
+      flatMap(() => {
+        return this.http.get(
+          `${this.urlApi}/get-game/${idGame}/${idPlayer}/${playerNumber}`
+        );
+      })
+    );
   }
 
-  apiRequest() {
-    this.http.get("http://localhost:8080/api/personas").subscribe(payload => {
-      console.log(payload);
-    });
-    this.http
-      .post("http://localhost:8080/api/personas", { nombre: "Hector" })
-      .subscribe(response => {
-        console.log(response);
-      });
-  }
   // Función para verificar si el disparo se hace al último zombie del tablero
   lastZombie(arrBoard) {
     let arrEndGame = [];
@@ -73,7 +61,6 @@ export class PlaysService {
 
   // Función que genera el json de una nueva partida con todos los campos necesarios
   newGame(rows = 10, columns = 10) {
-    this.apiRequest();
     let game = {
       id: this.getRandomId(),
       rows,
@@ -135,7 +122,7 @@ export class PlaysService {
   //Función que guarda el tablero seleccionado por un jugador
   selectBoard(idGame, idPlayer, board, playerName) {
     this.http
-      .post(`${this.urlApi}/api/select-board`, { board, playerName })
+      .post(`${this.urlApi}/select-board`, { board, playerName })
       .subscribe();
     this.plays.forEach(play => {
       if (play.id === idGame && play.player1.id === idPlayer) {
@@ -147,6 +134,15 @@ export class PlaysService {
       }
     });
     console.log(this.plays);
+  }
+  sendShot(idGame, idPlayer, playerNumber, xPosition, yPosition) {
+    return this.http.post(`${this.urlApi}/shot`, {
+      idGame,
+      idPlayer,
+      playerNumber,
+      xPosition,
+      yPosition
+    });
   }
 
   //Función que verifica el estatus de un jugador, si ya está listo o no para jugar.
@@ -161,8 +157,6 @@ export class PlaysService {
     });
     return output;
   }
-
-  scoreCalcule() {}
 
   // Función que verifica el disparo de un jugador y sus distintas posibilidades.
   shot(x, y, idGame, idPlayer) {

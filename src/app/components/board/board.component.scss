@@ -27,6 +27,7 @@
     width: 100%;
     font-family: "Londrina Solid";
     font-size: 31px;
+    padding-left: 15px;
   }
 }
 .board {
@@ -50,6 +51,7 @@
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
+    padding-bottom: 300px;
   }
   .fill-information {
     width: 80%;
