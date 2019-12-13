@@ -13,3 +13,22 @@
     padding-left: 12px;
   }
 }
+@media (max-width: 1000px) {
+  .footer {
+    height: 130px;
+    width: 100vw;
+  }
+  h4 {
+    font-size: 18px !important;
+  }
+}
+@media (max-width: 500px) {
+  .footer {
+    height: 100px;
+    width: 100vw;
+  }
+  h4 {
+    font-size: 12px !important;
+  }
+}
+

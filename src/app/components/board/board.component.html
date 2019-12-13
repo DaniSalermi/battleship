@@ -58,22 +58,27 @@
 </div>
 
 <ng-container *ngIf="status">
-  <h1>{{ currentGame.player.name }}</h1>
-  <h1 (click)="modal.getModal('winnerModal').open()" #winner>
-    Puntuación: {{ currentGame.player.score }}
-  </h1>
-  <h2>
-    ({{
-      currentGame.rival.name
-        ? currentGame.player.turn
-          ? "Es tu turno"
-          : "Espera tu turno"
-        : "Esperando player 2"
-    }})
-  </h2>
-  <h3>{{ currentGame.rival.name }}</h3>
-  <div class="container">
-    <!-- board blocked Player 1-->
+<div class="desktopInfo">
+    <h2>Tu eres: {{ currentGame.player.name }}</h2>
+    <h2 (click)="modal.getModal('winnerModal').open()" #winner>
+      Tu puntuación es: {{ currentGame.player.score }}
+    </h2>
+    <h1>
+      ({{
+        currentGame.rival.name
+          ? currentGame.player.turn
+            ? "Es tu turno"
+            : "Espera tu turno"
+          : "Esperando player 2"
+      }})
+    </h1>
+    <h2>
+      Tu rival es: {{ currentGame.rival.name }} y su puntuación es:
+      {{ currentGame.rival.score }} Puntos
+    </h2>
+  </div>
+  <div class="container actualGame">
+    <!-- Selected Board -->
     <div
       class="board"
       [ngStyle]="{
@@ -119,7 +124,35 @@
       </ng-container>
     </div>
 
-    <!-- PLayboard player 1 -->
+    <div class="desktopInfo turnNotifier">
+      <img
+        src="/assets/zombie-hand.svg"
+        class="turnHand"
+        [ngClass]="{ myTurn: currentGame.player.turn }"
+        alt="mano zombie que indica el turno"
+      />
+    </div>
+
+    <div class="mobileInfo">
+      <h3>
+        {{ currentGame.rival.name }}: {{ currentGame.rival.score }} Puntos
+      </h3>
+      <h2>
+        ({{
+          currentGame.rival.name
+            ? currentGame.player.turn
+              ? "Es tu turno"
+              : "Espera tu turno"
+            : "Esperando player 2"
+        }})
+      </h2>
+
+      <h1>{{ currentGame.player.name }}</h1>
+      <h1 (click)="modal.getModal('winnerModal').open()" #winner>
+        Tu puntuación es: {{ currentGame.player.score }}
+      </h1>
+    </div>
+    <!-- PLayboard-->
 
     <div
       class="playboard"
@@ -167,6 +200,8 @@
 <ng-container *ngIf="finishGame">
   <h1>TERMINO LA PARTIDA</h1>
 </ng-container>
+
+<!-- Modal, realiazado con la librería ngx-smart-modal-->
 
 <ngx-smart-modal #winnerModal identifier="winnerModal">
   <h1>¡Termino la partida!</h1>
