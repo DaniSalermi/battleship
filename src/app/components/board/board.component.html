@@ -32,17 +32,18 @@
         <ng-container *ngFor="let row of board; let i = index">
           <ng-container *ngFor="let tile of row; let j = index">
             <div
-              (click)="selectTile(i, j)"
-              [ngStyle]="{
-                background:
-                  board[i][j] === 1
-                    ? 'url(../assets/chancho.png)'
-                    : colorTile[i][j] == 0
-                    ? 'url(../assets/gramaclara.png)'
-                    : 'url(../assets/gramaoscura.png)',
-                'background-size': 'cover'
-              }"
-            ></div>
+            (click)="selectTile(i, j)"
+            [ngStyle]="{
+              background:
+                colorTile[i][j] == 0
+                  ? 'url(../assets/gramaclara.png) 0% 0% / cover'
+                  : 'url(../assets/gramaoscura.png) 0% 0% / cover'
+            }"
+          >
+        
+          <img *ngIf="board[i][j]==1" src="../assets/zombie.png" class="click">
+        
+        </div>
           </ng-container>
         </ng-container>
       </div>
@@ -70,18 +71,19 @@
           <div
             [ngStyle]="{
               background:
-                currentGame.player1.selectedBoard[i][j] === 1
-                  ? 'url(../assets/zombie.png)'
-                  : currentGame.player1.selectedBoard[i][j] === -1
-                  ? 'blue'
-                  : currentGame.player1.selectedBoard[i][j] === 2
-                  ? 'purple'
-                  : colorTile[i][j] == 0
-                  ? 'url(../assets/fondo1.png)'
-                  : 'url(../assets/fondo2.png)',
-              'background-size': 'cover'
+                  colorTile[i][j] == 0
+                  ? 'url(../assets/gramaclara.png) 0% 0% / cover'
+                  : 'url(../assets/gramaoscura.png) 0% 0% / cover'
             }"
-          ></div>
+          >
+          <img *ngIf=" currentGame.player1.selectedBoard[i][j] === 1" src="../assets/zombie.png" class="click">
+          <img *ngIf=" currentGame.player1.selectedBoard[i][j] === -1" src="../assets/no-hit-on-zombie-icon.svg" class="click">
+          <img *ngIf=" currentGame.player1.selectedBoard[i][j] === 2" src="../assets/hit-on-zombie-icon.svg" class="click">
+
+
+          
+          
+        </div>
         </ng-container>
       </ng-container>
     </div>
@@ -101,16 +103,17 @@
             (click)="selectPlayBoard(i, j)"
             [ngStyle]="{
               background:
-                playBoard[i][j] === 1
-                  ? 'url(../assets/muerto.png)'
-                  : playBoard[i][j] === 2
-                  ? 'url(../assets/zombie.jpg)'
-                  : colorTile[i][j] == 0
-                  ? 'url(../assets/fondo1.png)'
-                  : 'url(../assets/fondo2.png)',
-              'background-size': 'cover'
+                colorTile[i][j] == 0
+                  ? 'url(../assets/gramaclara.png) 0% 0% / cover'
+                  : 'url(../assets/gramaoscura.png) 0% 0% / cover'
+            
             }"
-          ></div>
+          >
+
+          <img *ngIf=" playBoard[i][j] === 1" src="../assets/no-hit-on-zombie-icon.svg" class="click">
+          <img *ngIf=" playBoard[i][j] === 2" src="../assets/hit-on-zombie-icon.svg" class="click">
+        
+        </div>
         </ng-container>
       </ng-container>
     </div>
@@ -136,18 +139,16 @@
           <div
             [ngStyle]="{
               background:
-                currentGame.player2.selectedBoard[i][j] === 1
-                  ? 'url(../assets/zombie.jpg)'
-                  : currentGame.player2.selectedBoard[i][j] === -1
-                  ? 'blue'
-                  : currentGame.player2.selectedBoard[i][j] === 2
-                  ? 'purple'
-                  : colorTile[i][j] == 0
-                  ? 'url(../assets/fondo1.png)'
-                  : 'url(../assets/fondo2.png)',
-              'background-size': 'cover'
+           colorTile[i][j] == 0
+                  ? 'url(../assets/gramaclara.png) 0% 0% / cover'
+                  : 'url(../assets/gramaoscura.png) 0% 0% / cover'
+            
             }"
-          ></div>
+          >
+          <img *ngIf=" currentGame.player2.selectedBoard[i][j] === 1" src="../assets/zombie.png" class="click">
+          <img *ngIf=" currentGame.player2.selectedBoard[i][j] === -1" src="../assets/no-hit-on-zombie-icon.svg" class="click">
+          <img *ngIf=" currentGame.player2.selectedBoard[i][j] === 2" src="../assets/hit-on-zombie-icon.svg" class="click">
+        </div>
         </ng-container>
       </ng-container>
     </div>
@@ -167,16 +168,15 @@
             (click)="selectPlayBoard(i, j)"
             [ngStyle]="{
               background:
-                playBoard2[i][j] === 1
-                  ? 'yellow'
-                  : playBoard2[i][j] === 2
-                  ? 'brown'
-                  : colorTile[i][j] == 0
-                  ? 'url(../assets/fondo1.png)'
-                  : 'url(../assets/fondo2.png)',
-              'background-size': 'cover'
+               colorTile[i][j] == 0
+                  ? 'url(../assets/gramaclara.png) 0% 0% / cover'
+                  : 'url(../assets/gramaoscura.png) 0% 0% / cover'
+              
             }"
-          ></div>
+          >
+          <img *ngIf=" playBoard2[i][j] === 1" src="../assets/no-hit-on-zombie-icon.svg" class="click">
+          <img *ngIf=" playBoard2[i][j] === 2" src="../assets/hit-on-zombie-icon.svg" class="click">
+        </div>
         </ng-container>
       </ng-container>
     </div>

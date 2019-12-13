@@ -34,6 +34,12 @@
   display: grid;
   width: 500px;
   height: 500px;
+  div{
+    height:50px !important;
+  }
+}
+.click{
+  width: 100%;
 }
 .container {
   display: flex;
@@ -64,6 +70,12 @@
     display: grid;
     width: 320px;
     height: 320px;
+    div{
+      height:50px !important;
+    }
+  }
+  .click{
+    width: 100%;
   }
 }
 
@@ -87,5 +99,11 @@
     display: grid;
     width: 300px;
     height: 300px;
+    div{
+      height:50px !important;
+    }
+  }
+  .click{
+    width: 100%;
   }
 }
