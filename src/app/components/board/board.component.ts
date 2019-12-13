@@ -1,6 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { PlaysService } from "src/app/services/plays.service";
 import { FormControl } from "@angular/forms";
+import { NgxSmartModalService } from "ngx-smart-modal";
 
 @Component({
   selector: "app-board",
@@ -8,6 +9,8 @@ import { FormControl } from "@angular/forms";
   styleUrls: ["./board.component.scss"]
 })
 export class BoardComponent implements OnInit {
+  @ViewChild("winner", { static: false }) winner: ElementRef<any>;
+  ZOMBIES_NEEDED = 2;
   name = new FormControl("");
   currentGame: any = {};
   board = [];
@@ -24,14 +27,20 @@ export class BoardComponent implements OnInit {
   colorTile = [];
   changeColor = 0;
 
-  constructor(private playsService: PlaysService) {
+  constructor(
+    private playsService: PlaysService,
+    public modal: NgxSmartModalService
+  ) {
     this.generateBoard(this.rows, this.columns);
   }
 
   ngOnInit() {}
 
   selectTile(x, y) {
-    if (this.quantityOfZombies(this.board) < 20 || this.board[x][y] === 1) {
+    if (
+      this.quantityOfZombies(this.board) < this.ZOMBIES_NEEDED ||
+      this.board[x][y] === 1
+    ) {
       this.board[x][y] = this.board[x][y] === 1 ? 0 : 1;
     }
   }
@@ -51,6 +60,9 @@ export class BoardComponent implements OnInit {
         console.log(payload);
         this.currentGame = payload;
         this.status = true;
+        if (this.currentGame.endGame) {
+          this.winner.nativeElement.click();
+        }
       });
   }
 
@@ -62,14 +74,17 @@ export class BoardComponent implements OnInit {
     if (this.name.value === "") {
       alert("Necesitas colocar tu nombre");
     }
-    if (this.quantityOfZombies(this.board) !== 20) {
+    if (this.quantityOfZombies(this.board) !== this.ZOMBIES_NEEDED) {
       alert(
-        `necesitas al menos 20 zombies y tienes ${this.quantityOfZombies(
-          this.board
-        )}`
+        `necesitas al menos ${
+          this.ZOMBIES_NEEDED
+        } zombies y tienes ${this.quantityOfZombies(this.board)}`
       );
     }
-    if (this.name.value !== "" && this.quantityOfZombies(this.board) === 20) {
+    if (
+      this.name.value !== "" &&
+      this.quantityOfZombies(this.board) === this.ZOMBIES_NEEDED
+    ) {
       this.playsService
         .selectBoard(this.idGame, this.idPlayer, this.board, this.name.value)
         .subscribe((e: any) => {

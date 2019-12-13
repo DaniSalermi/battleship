@@ -2,6 +2,15 @@
   display: flex;
   flex-direction: row-reverse;
 }
+.start-game-button {
+  border-radius: 35px;
+  background-color: var(--blue-battlezombie);
+  border: inherit;
+  padding: 20px 148px;
+  font-family: "Londrina Solid";
+  font-size: 31px;
+  color: var(--purple-battlezombie);
+}
 .fill-information {
   font-family: "Londrina Solid";
   font-size: 31px;

@@ -22,6 +22,7 @@
     "@angular/router": "~8.2.5",
     "compression": "^1.7.4",
     "express": "^4.17.1",
+    "ngx-smart-modal": "^7.3.0",
     "path": "^0.12.7",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
