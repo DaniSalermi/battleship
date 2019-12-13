@@ -97,16 +97,16 @@ image
 
 Finalmente, después de analizar propotipos de baja, y solicitar feedback de diferentes usuarios, diseñamos una pagina amigable, fácil de usar, con el objetivo de simplificar las tareas del ususario. A continuación se puede ver el diseño desarrollado en herramienta Adobe XD.
 
-<a href="https://ibb.co/NywDG2k"><img src="https://i.ibb.co/QKsSxvq/1.jpg" alt="1" ></a><br /><a target='_blank' href='https://es.imgbb.com/'>upload pictures</a>
+<a href="https://ibb.co/NywDG2k"><img src="https://i.ibb.co/QKsSxvq/1.jpg" alt="1" ></a>
 
-<a href="https://ibb.co/cTtk3Rs"><img src="https://i.ibb.co/9Y2cgBd/2.jpg" alt="2" ></a><br /><a target='_blank' href='https://es.imgbb.com/'>upload pictures</a>
+<a href="https://ibb.co/cTtk3Rs"><img src="https://i.ibb.co/9Y2cgBd/2.jpg" alt="2" ></a>
 
-<a href="https://ibb.co/bbxDwWT"><img src="https://i.ibb.co/nPTtdg9/3.jpg" alt="3" ></a><br /><a target='_blank' href='https://es.imgbb.com/'>upload pictures</a>
+<a href="https://ibb.co/bbxDwWT"><img src="https://i.ibb.co/nPTtdg9/3.jpg" alt="3" ></a>
 
-<a href="https://ibb.co/LrdwdLz"><img src="https://i.ibb.co/8bg3gWD/4.jpg" alt="4" ></a><br /><a target='_blank' href='https://es.imgbb.com/'>upload pictures</a>
+<a href="https://ibb.co/LrdwdLz"><img src="https://i.ibb.co/8bg3gWD/4.jpg" alt="4" ></a>
 
-<a href="https://ibb.co/VWMSLtM"><img src="https://i.ibb.co/jv3M8T3/5.jpg" alt="5" ></a><br /><a target='_blank' href='https://es.imgbb.com/'>upload pictures</a>
+<a href="https://ibb.co/VWMSLtM"><img src="https://i.ibb.co/jv3M8T3/5.jpg" alt="5" ></a>
 
-<a href="https://ibb.co/CHFtdgp"><img src="https://i.ibb.co/P68YpKs/6.jpg" alt="6" ></a><br /><a target='_blank' href='https://es.imgbb.com/'>upload pictures</a>
+<a href="https://ibb.co/CHFtdgp"><img src="https://i.ibb.co/P68YpKs/6.jpg" alt="6" ></a>
 
-<a href="https://ibb.co/j8gJ4dz"><img src="https://i.ibb.co/3TBRhwv/7.jpg" alt="7" ></a><br /><a target='_blank' href='https://es.imgbb.com/'>upload pictures</a>
+<a href="https://ibb.co/j8gJ4dz"><img src="https://i.ibb.co/3TBRhwv/7.jpg" alt="7" ></a>
