@@ -6,6 +6,7 @@ import { HttpClient } from "@angular/common/http";
 })
 export class PlaysService {
   private plays = [];
+  private urlApi = "http://localhost:4000";
 
   constructor(private http: HttpClient) {}
   // todo Función para saber si existe en la base de datos alguna partida vacía donde el player 2 pueda entrar a jugar.
@@ -132,7 +133,10 @@ export class PlaysService {
   }
 
   //Función que guarda el tablero seleccionado por un jugador
-  selectBoard(idGame, idPlayer, board) {
+  selectBoard(idGame, idPlayer, board, playerName) {
+    this.http
+      .post(`${this.urlApi}/api/select-board`, { board, playerName })
+      .subscribe();
     this.plays.forEach(play => {
       if (play.id === idGame && play.player1.id === idPlayer) {
         play.player1.ready = true;

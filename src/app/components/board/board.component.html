@@ -1,39 +1,51 @@
 <div class="container">
-  <div *ngIf="!status">
-    <div>
+  <div *ngIf="!status" class="selecting-board">
+    <div class="fill-information">
+      <h3>PASO 1</h3>
+      <h2>Escoge un nombre para poder identificarte</h2>
       <input
+        class="input-name"
         type="text"
         placeholder="Ingresa tu nickname"
         [formControl]="name"
       />
+      <h3>PASO 2</h3>
+      <h2>
+        Posiciona tu horda de zombies en el tablero de tu vecino (Tienes que
+        colocar 20 zombies)
+      </h2>
+      <h3>PASO 3</h3>
+      <button class="start-game-button" (click)="startGame()">
+        Iniciar Juego
+      </button>
     </div>
-    <div
-      class="board"
-      [ngStyle]="{
-        gridTemplateColumns: 'repeat(' + columns + ', 1fr)',
-        gridTemplateRows: 'repeat(' + rows + ', 1fr)'
-      }"
-    >
-      <ng-container *ngFor="let row of board; let i = index">
-        <ng-container *ngFor="let tile of row; let j = index">
-          <div
-            (click)="selectTile(i, j)"
-            [ngStyle]="{
-              background:
-                colorTile[i][j] == 0
-                  ? 'url(../assets/gramaclara.png) 0% 0% / cover'
-                  : 'url(../assets/gramaoscura.png) 0% 0% / cover'
-            }"
-          >
-        
-          <img *ngIf="board[i][j]==1" src="../assets/zombie.png" class="click">
-        
-        </div>
+
+    <div>
+      <h2>El jardín de tu vecino:</h2>
+      <div
+        class="board"
+        [ngStyle]="{
+          gridTemplateColumns: 'repeat(' + columns + ', 1fr)',
+          gridTemplateRows: 'repeat(' + rows + ', 1fr)'
+        }"
+      >
+        <ng-container *ngFor="let row of board; let i = index">
+          <ng-container *ngFor="let tile of row; let j = index">
+            <div
+              (click)="selectTile(i, j)"
+              [ngStyle]="{
+                background:
+                  board[i][j] === 1
+                    ? 'url(../assets/chancho.png)'
+                    : colorTile[i][j] == 0
+                    ? 'url(../assets/gramaclara.png)'
+                    : 'url(../assets/gramaoscura.png)',
+                'background-size': 'cover'
+              }"
+            ></div>
+          </ng-container>
         </ng-container>
-      </ng-container>
-    </div>
-    <div class="margin-top">
-      <button (click)="startGame()">Iniciar Juego</button>
+      </div>
     </div>
   </div>
 </div>

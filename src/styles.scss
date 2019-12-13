@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --blue-battlezombie: #79cace;
+  --purple-battlezombie: #4d4165;
+}
+body {
+  font-family: "Londrina Solid", cursive;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline;
+  background: transparent;
+  line-height: 1;
+}
+h2 {
+  font-family: "Londrina Solid";
+  font-size: 31px;
+  color: var(--purple-battlezombie);
+}
+h3 {
+  font-family: "Londrina Solid";
+  font-size: 31px;
+  color: var(--blue-battlezombie);
+}

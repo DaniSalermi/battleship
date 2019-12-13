@@ -51,7 +51,12 @@ export class BoardComponent implements OnInit {
   }
 
   startGame() {
-    this.playsService.selectBoard(this.idGame, this.idPlayer, this.board);
+    this.playsService.selectBoard(
+      this.idGame,
+      this.idPlayer,
+      this.board,
+      this.name.value
+    );
     this.status = this.playsService.playerStatus(this.idGame, this.idPlayer);
     this.currentGame = this.playsService.getPlay(this.idGame);
     this.playBoard = this.currentGame.player1.playBoard;
