@@ -60,7 +60,15 @@
 <ng-container *ngIf="status">
   <h1>{{ currentGame.player.name }}</h1>
   <h1>Puntuación: {{ currentGame.player.score }}</h1>
-  <h2>({{ currentGame.player.turn ? "Es tu turno" : "Espera tu turno" }})</h2>
+  <h2>
+    ({{
+      currentGame.rival.name
+        ? currentGame.player.turn
+          ? "Es tu turno"
+          : "Espera tu turno"
+        : "Esperando player 2"
+    }})
+  </h2>
   <h3>{{ currentGame.rival.name }}</h3>
   <div class="container">
     <!-- board blocked Player 1-->

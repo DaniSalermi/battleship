@@ -28,19 +28,14 @@ export class BoardComponent implements OnInit {
     this.generateBoard(this.rows, this.columns);
   }
 
-  ngOnInit() {
-    // this.status = this.playsService.playerStatus(this.idGame, this.idPlayer);
-    // this.playsService.getGameStatus(564644, 977766, 1).subscribe(payload => {
-    //   console.log(payload);
-    // });
-    // this.playsService.sendShot(564644, 977766, 1, 0, 0).subscribe(payload => {
-    //   console.log(payload);
-    // });
-  }
+  ngOnInit() {}
 
   selectTile(x, y) {
-    this.board[x][y] = 1;
+    if (this.quantityOfZombies(this.board) < 20 || this.board[x][y] === 1) {
+      this.board[x][y] = this.board[x][y] === 1 ? 0 : 1;
+    }
   }
+
   selectPlayBoard(x, y) {
     this.playsService
       .sendShot(this.idGame, this.idPlayer, this.playerNumber, x, y)
@@ -64,14 +59,38 @@ export class BoardComponent implements OnInit {
   }
 
   startGame() {
-    this.playsService
-      .selectBoard(this.idGame, this.idPlayer, this.board, this.name.value)
-      .subscribe((e: any) => {
-        this.idGame = e.id;
-        this.idPlayer = e.playerId;
-        this.playerNumber = e.player;
-        this.getGame();
+    if (this.name.value === "") {
+      alert("Necesitas colocar tu nombre");
+    }
+    if (this.quantityOfZombies(this.board) !== 20) {
+      alert(
+        `necesitas al menos 20 zombies y tienes ${this.quantityOfZombies(
+          this.board
+        )}`
+      );
+    }
+    if (this.name.value !== "" && this.quantityOfZombies(this.board) === 20) {
+      this.playsService
+        .selectBoard(this.idGame, this.idPlayer, this.board, this.name.value)
+        .subscribe((e: any) => {
+          this.idGame = e.id;
+          this.idPlayer = e.playerId;
+          this.playerNumber = e.player;
+          this.getGame();
+        });
+    }
+  }
+
+  quantityOfZombies(board) {
+    let count = 0;
+    board.forEach(row => {
+      row.forEach(tile => {
+        if (tile === 1) {
+          count++;
+        }
       });
+    });
+    return count;
   }
 
   generateBoard(rows, columns) {

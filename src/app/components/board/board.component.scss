@@ -34,6 +34,7 @@
   display: grid;
   width: 500px;
   height: 500px;
+  user-select: none;
   div {
     height: 50px !important;
   }
@@ -46,6 +47,7 @@
   padding: 0 150px;
 }
 .playboard {
+  user-select: none;
   margin-left: 100px;
   display: grid;
   width: 500px;
