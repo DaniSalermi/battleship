@@ -59,11 +59,11 @@
 
 <ng-container *ngIf="status">
   <div class="desktopInfo">
-    <h1>{{ currentGame.player.name }}</h1>
-    <h1 (click)="modal.getModal('winnerModal').open()" #winner>
-      Puntuación: {{ currentGame.player.score }}
-    </h1>
-    <h2>
+    <h2>Tu eres: {{ currentGame.player.name }}</h2>
+    <h2 (click)="modal.getModal('winnerModal').open()" #winner>
+      Tu puntuación es: {{ currentGame.player.score }}
+    </h2>
+    <h1>
       ({{
         currentGame.rival.name
           ? currentGame.player.turn
@@ -71,8 +71,11 @@
             : "Espera tu turno"
           : "Esperando player 2"
       }})
+    </h1>
+    <h2>
+      Tu rival es: {{ currentGame.rival.name }} y su puntuación es:
+      {{ currentGame.rival.score }} Puntos
     </h2>
-    <h3>{{ currentGame.rival.name }}</h3>
   </div>
   <div class="container actualGame">
     <!-- Selected Board -->
@@ -145,7 +148,7 @@
 
       <h1>{{ currentGame.player.name }}</h1>
       <h1 (click)="modal.getModal('winnerModal').open()" #winner>
-        Puntuación: {{ currentGame.player.score }}
+        Tu puntuación es: {{ currentGame.player.score }}
       </h1>
     </div>
     <!-- PLayboard-->
