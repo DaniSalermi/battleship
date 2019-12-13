@@ -16,32 +16,26 @@
 }
 @media (max-width: 1000px) {
   .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 80%;
+    padding: 0 30px;
+    margin-bottom: 30px;
+
     h1 {
-      font-family: "Luckiest Guy";
-      font-size: 35px;
-      color: var(--purple-battlezombie);
-      text-align: center;
+      font-size: 24px;
+    }
+    img {
+      width: 150px;
     }
   }
 }
 @media (max-width: 400px) {
   .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
+    padding: 0 20px;
+    margin-bottom: 20px;
     h1 {
-      font-family: "Luckiest Guy";
-      font-size: 15px;
-      color: var(--purple-battlezombie);
-      text-align: center;
+      font-size: 14px;
     }
     img {
-      width: 120px;
+      width: 100px;
     }
   }
 }

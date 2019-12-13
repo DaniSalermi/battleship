@@ -57,7 +57,7 @@
 }
 .playboard {
   user-select: none;
-  margin-left: 100px;
+  margin-left: 0px;
   display: grid;
   width: 500px;
   height: 500px;
@@ -72,59 +72,138 @@
     }
   }
 }
+.turnNotifier {
+  align-self: center;
+  .turnHand {
+    transition: transform 0.4s ease-in-out;
+    max-width: 172px;
+    margin: 0 20px;
+    &.myTurn {
+      transform: scaleY(-1) rotate(180deg);
+    }
+  }
+}
 
+.desktopInfo {
+  display: block;
+}
+.mobileInfo {
+  display: none;
+}
+
+// Media query para tablets
 @media (max-width: 1000px) {
+  h2 {
+    font-size: 24px;
+  }
   .selecting-board {
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
-    padding-bottom: 300px;
   }
   .fill-information {
     width: 80%;
     padding: 0;
+    margin-top: 20px;
+    h3 {
+      font-size: 24px;
+    }
+    .input-name {
+      font-size: 24px;
+      height: 60px;
+    }
+    .start-game-button {
+      font-size: 24px;
+      padding: 15px 120px;
+    }
+  }
+  .container {
+    padding: 0 15px;
   }
 }
 
-@media (max-width: 400px) {
-  .board {
-    display: grid;
-    width: 320px;
-    height: 320px;
+// Pone un tablero de 400px por 400px
+@media (max-width: 540px) {
+  h2 {
+    font-size: 14px;
+  }
+  .board,
+  .playboard {
+    width: 400px;
+    height: 400px;
     div {
-      height: 50px !important;
+      height: 40px !important;
     }
+  }
+  .board {
+    margin-bottom: 20px;
+  }
+  .playboard {
+    margin-left: 0;
   }
   .click {
     width: 100%;
+  }
+  .fill-information {
+    h3 {
+      font-size: 14px;
+    }
+    .input-name {
+      font-size: 14px;
+      height: 40px;
+    }
+    .start-game-button {
+      font-size: 14px;
+      padding: 12px 65px;
+    }
+  }
+  .container {
+    &.actualGame {
+      flex-direction: column;
+    }
+  }
+  .desktopInfo {
+    display: none;
+  }
+  .mobileInfo {
+    display: block;
+  }
+}
+// Pone un tablero de 320px por 320px
+@media (max-width: 400px) {
+  .board,
+  .playboard {
+    width: 320px;
+    height: 320px;
+    div {
+      height: 32px !important;
+    }
   }
 }
 
 @media (max-width: 325px) {
-  .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    h1 {
-      font-family: "Luckiest Guy";
-      font-size: 12px;
-      color: var(--purple-battlezombie);
-      text-align: center;
-    }
-    img {
-      width: 100px;
-    }
+  h2 {
+    font-size: 12px;
   }
-  .board {
-    display: grid;
-    width: 300px;
-    height: 300px;
+  .board,
+  .playboard {
+    width: 290px;
+    height: 290px;
     div {
-      height: 50px !important;
+      height: 29px !important;
     }
   }
-  .click {
-    width: 100%;
+  .fill-information {
+    h3 {
+      font-size: 12px;
+    }
+    .input-name {
+      font-size: 12px;
+      height: 40px;
+    }
+    .start-game-button {
+      font-size: 12px;
+      padding: 10px 50px;
+    }
   }
 }
