@@ -1,0 +1,130 @@
+.selecting-board {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.start-game-button {
+  border-radius: 35px;
+  background-color: var(--blue-battlezombie);
+  border: inherit;
+  padding: 20px 148px;
+  font-family: "Londrina Solid";
+  font-size: 31px;
+  color: var(--purple-battlezombie);
+}
+.fill-information {
+  font-family: "Londrina Solid";
+  font-size: 31px;
+  color: var(--purple-battlezombie);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 80px;
+
+  .start-game-button {
+    border-radius: 35px;
+    background-color: var(--blue-battlezombie);
+    border: inherit;
+    padding: 20px 148px;
+    font-family: "Londrina Solid";
+    font-size: 31px;
+    color: var(--purple-battlezombie);
+  }
+  .input-name {
+    border: solid 1px var(--blue-battlezombie);
+    border-radius: 5px;
+    height: 76px;
+    width: 100%;
+    font-family: "Londrina Solid";
+    font-size: 31px;
+    padding-left: 15px;
+  }
+}
+.board {
+  display: grid;
+  width: 500px;
+  height: 500px;
+  user-select: none;
+  div {
+    height: 50px !important;
+  }
+}
+.click {
+  width: 100%;
+}
+.container {
+  display: flex;
+  padding: 0 150px;
+}
+.playboard {
+  user-select: none;
+  margin-left: 100px;
+  display: grid;
+  width: 500px;
+  height: 500px;
+
+  div {
+    &:nth-child(1n) {
+      background: url("/assets/gramaclara.png") 0% 0% / cover;
+    }
+
+    &:nth-child(2n) {
+      background: url("/assets/gramaoscura.png") 0% 0% / cover;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .selecting-board {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    padding-bottom: 300px;
+  }
+  .fill-information {
+    width: 80%;
+    padding: 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .board {
+    display: grid;
+    width: 320px;
+    height: 320px;
+    div {
+      height: 50px !important;
+    }
+  }
+  .click {
+    width: 100%;
+  }
+}
+
+@media (max-width: 325px) {
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    h1 {
+      font-family: "Luckiest Guy";
+      font-size: 12px;
+      color: var(--purple-battlezombie);
+      text-align: center;
+    }
+    img {
+      width: 100px;
+    }
+  }
+  .board {
+    display: grid;
+    width: 300px;
+    height: 300px;
+    div {
+      height: 50px !important;
+    }
+  }
+  .click {
+    width: 100%;
+  }
+}
