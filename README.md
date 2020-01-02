@@ -1,3 +1,5 @@
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/0X1NK2v/battlezombie-home-mockup.png" alt="battlezombie-home-mockup" border="0"></a>
+
 # BATTLESHIP
 
 Este proyecto forma parte de nuestro programa de formación profesional con Laboratoria.
